@@ -1,0 +1,7 @@
+local-db:
+    postgres:
+        host: localhost
+        port: 5436
+        name: chat-service
+        username: donghyeon
+        password: adzc1973
