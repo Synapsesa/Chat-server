@@ -1,7 +1,9 @@
 package com.synapse.chat_service.domain.entity;
 
-import com.synapse.chat_service.domain.common.BaseEntity;
+import com.synapse.chat_service.domain.common.BaseTimeEntity;
 import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.exception.commonexception.ValidException;
+import com.synapse.chat_service.exception.domain.ExceptionType;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "messages")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Message extends BaseEntity {
+public class Message extends BaseTimeEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +39,28 @@ public class Message extends BaseEntity {
     
     @Builder
     public Message(ChatRoom chatRoom, SenderType senderType, String content) {
+        validateContent(content);
         this.chatRoom = chatRoom;
         this.senderType = senderType;
         this.content = content;
+    }
+    
+    /**
+     * 메시지 내용 업데이트 (도메인 로직)
+     * @param newContent 새로운 메시지 내용
+     */
+    public void updateContent(String newContent) {
+        validateContent(newContent);
+        this.content = newContent;
+    }
+    
+    private void validateContent(String content) {
+        if (content == null || content.trim().isEmpty()) {
+            throw new ValidException(ExceptionType.INVALID_INPUT_VALUE, "메시지 내용은 비어있을 수 없습니다.");
+        }
+        
+        if (content.length() > 1000) {
+            throw new ValidException(ExceptionType.INVALID_INPUT_VALUE, "메시지 내용은 1000자를 초과할 수 없습니다.");
+        }
     }
 }

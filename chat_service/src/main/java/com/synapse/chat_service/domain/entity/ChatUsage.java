@@ -1,6 +1,6 @@
 package com.synapse.chat_service.domain.entity;
 
-import com.synapse.chat_service.domain.common.BaseEntity;
+import com.synapse.chat_service.domain.common.BaseTimeEntity;
 import com.synapse.chat_service.domain.entity.enums.SubscriptionType;
 
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "chat_usages")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChatUsage extends BaseEntity {
+public class ChatUsage extends BaseTimeEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
