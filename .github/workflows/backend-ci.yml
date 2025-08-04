@@ -37,26 +37,26 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('chat-service/**/*.gradle*', 'chat-service/**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('chat_service/**/*.gradle*', 'chat_service/**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
 
       - name: gradlew 실행 권한 부여
-        working-directory: chat-service
+        working-directory: chat_service
         run: chmod +x ./gradlew
 
       - name: Gradle로 테스트 실행
-        working-directory: chat-service
+        working-directory: chat_service
         run: ./gradlew --info test
 
       - name: 테스트 결과 리포트
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: 'chat-service/build/test-results/test/TEST-*.xml'
+          files: 'chat_service/build/test-results/test/TEST-*.xml'
       
       - name: 테스트 결과 게시
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: 'chat-service/build/test-results/test/TEST-*.xml'
+          report_paths: 'chat_service/build/test-results/test/TEST-*.xml'
