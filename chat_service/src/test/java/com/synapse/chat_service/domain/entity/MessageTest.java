@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @DisplayName("Message 도메인 엔티티 테스트")
 class MessageTest {
 
-    private ChatRoom chatRoom;
+    private Conversation conversation;
     private Message message;
     private final String initialContent = "초기 메시지 내용";
 
     @BeforeEach
     void setUp() {
-        chatRoom = TestObjectFactory.createChatRoom(1L, "테스트 채팅방");
+        conversation = TestObjectFactory.createConversation(1L);
 
-        message = TestObjectFactory.createUserMessage(chatRoom, initialContent);
+        message = TestObjectFactory.createUserMessage(conversation, initialContent);
     }
 
     @Nested
@@ -181,10 +181,10 @@ class MessageTest {
             String testContent = "테스트 메시지 내용";
 
             // when
-            Message newMessage = TestObjectFactory.createAssistantMessage(chatRoom, testContent);
+            Message newMessage = TestObjectFactory.createAssistantMessage(conversation, testContent);
 
             // then
-            assertThat(newMessage.getChatRoom()).isEqualTo(chatRoom);
+            assertThat(newMessage.getConversation()).isEqualTo(conversation);
             assertThat(newMessage.getSenderType()).isEqualTo(SenderType.ASSISTANT);
             assertThat(newMessage.getContent()).isEqualTo(testContent);
         }
@@ -196,7 +196,7 @@ class MessageTest {
             String testContent = "사용자 메시지";
 
             // when
-            Message userMessage = TestObjectFactory.createUserMessage(chatRoom, testContent);
+            Message userMessage = TestObjectFactory.createUserMessage(conversation, testContent);
 
             // then
             assertThat(userMessage.getSenderType()).isEqualTo(SenderType.USER);
@@ -210,7 +210,7 @@ class MessageTest {
             String testContent = "AI 응답 메시지";
 
             // when
-            Message aiMessage = TestObjectFactory.createAssistantMessage(chatRoom, testContent);
+            Message aiMessage = TestObjectFactory.createAssistantMessage(conversation, testContent);
 
             // then
             assertThat(aiMessage.getSenderType()).isEqualTo(SenderType.ASSISTANT);
@@ -226,7 +226,7 @@ class MessageTest {
             // when & then
             ValidException exception = assertThrows(ValidException.class, () -> {
                 Message.builder()
-                        .chatRoom(chatRoom)
+                        .conversation(conversation)
                         .senderType(SenderType.USER)
                         .content(nullContent)
                         .build();
@@ -244,7 +244,7 @@ class MessageTest {
             // when & then
             ValidException exception = assertThrows(ValidException.class, () -> {
                 Message.builder()
-                        .chatRoom(chatRoom)
+                        .conversation(conversation)
                         .senderType(SenderType.USER)
                         .content(emptyContent)
                         .build();
@@ -262,7 +262,7 @@ class MessageTest {
             // when & then
             ValidException exception = assertThrows(ValidException.class, () -> {
                 Message.builder()
-                        .chatRoom(chatRoom)
+                        .conversation(conversation)
                         .senderType(SenderType.USER)
                         .content(whitespaceOnlyContent)
                         .build();
@@ -280,7 +280,7 @@ class MessageTest {
             // when & then
             ValidException exception = assertThrows(ValidException.class, () -> {
                 Message.builder()
-                        .chatRoom(chatRoom)
+                        .conversation(conversation)
                         .senderType(SenderType.USER)
                         .content(tooLongContent)
                         .build();
@@ -296,7 +296,7 @@ class MessageTest {
             String maxLengthContent = "a".repeat(1000);
 
             // when
-            Message newMessage = TestObjectFactory.createUserMessage(chatRoom, maxLengthContent);
+            Message newMessage = TestObjectFactory.createUserMessage(conversation, maxLengthContent);
 
             // then
             assertThat(newMessage.getContent()).isEqualTo(maxLengthContent);
@@ -310,7 +310,7 @@ class MessageTest {
             String exactMaxLengthContent = "b".repeat(1000);
 
             // when
-            Message newMessage = TestObjectFactory.createAssistantMessage(chatRoom, exactMaxLengthContent);
+            Message newMessage = TestObjectFactory.createAssistantMessage(conversation, exactMaxLengthContent);
 
             // then
             assertThat(newMessage.getContent()).isEqualTo(exactMaxLengthContent);

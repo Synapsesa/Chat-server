@@ -11,6 +11,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * 사용자의 채팅 사용량 및 구독 정보를 관리하는 엔티티
+ * MSA 원칙에 따라 외부 서비스의 userId만을 참조하여 사용자를 식별합니다.
+ */
 @Entity
 @Table(name = "chat_usages")
 @Getter

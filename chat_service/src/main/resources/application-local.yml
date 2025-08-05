@@ -17,6 +17,26 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
     show-sql: true
+  
+  data:
+    redis:
+      host: ${local-db.redis.host}
+      port: ${local-db.redis.port}
+      timeout: ${local-db.redis.timeout}
+      lettuce:
+        pool:
+          max-active: ${local-db.redis.max-active}
+          max-idle: ${local-db.redis.max-idle}
+          min-idle: ${local-db.redis.min-idle}
+  
+  session:
+    store-type: redis
+    redis:
+        namespace: spring:session
+
+session:
+  expiration-hours: 24
+  max-sessions-per-user: 5
 
 logging:
   level:

@@ -23,7 +23,7 @@ public enum ExceptionType {
     INSUFFICIENT_PERMISSION(HttpStatus.FORBIDDEN, "E202", "권한이 부족합니다."),
     
     // 404 Not Found
-    CHAT_ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "E301", "채팅방을 찾을 수 없습니다."),
+    CONVERSATION_NOT_FOUND(HttpStatus.NOT_FOUND, "E301", "대화를 찾을 수 없습니다."),
     MESSAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "E302", "메시지를 찾을 수 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "E303", "사용자를 찾을 수 없습니다."),
     RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "E304", "요청한 리소스를 찾을 수 없습니다."),
@@ -44,6 +44,9 @@ public enum ExceptionType {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E901", "서버 내부 오류가 발생했습니다."),
     DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E902", "데이터베이스 오류가 발생했습니다."),
     EXTERNAL_SERVICE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E903", "외부 서비스 연동 중 오류가 발생했습니다."),
+    REDIS_CONNECTION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E904", "Redis 연결 오류가 발생했습니다."),
+    REDIS_OPERATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E905", "Redis 작업 중 오류가 발생했습니다."),
+    REDIS_TRANSACTION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E906", "Redis 트랜잭션 처리 중 오류가 발생했습니다."),
     
     // 502 Bad Gateway
     BAD_GATEWAY(HttpStatus.BAD_GATEWAY, "E951", "게이트웨이 오류가 발생했습니다."),

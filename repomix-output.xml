@@ -1,0 +1,4869 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.github/ISSUE_TEMPLATE/bug-template.yml
+.github/ISSUE_TEMPLATE/discussion-template.yml
+.github/ISSUE_TEMPLATE/feature-template.yml
+.github/ISSUE_TEMPLATE/refactor-template.yml
+.github/PULL_REQUEST_TEMPLATE.md
+.github/workflows/backend-ci.yml
+chat_service/.gitattributes
+chat_service/.gitignore
+chat_service/build.gradle
+chat_service/gradle/wrapper/gradle-wrapper.properties
+chat_service/gradlew
+chat_service/gradlew.bat
+chat_service/settings.gradle
+chat_service/src/main/java/com/synapse/chat_service/ChatServiceApplication.java
+chat_service/src/main/java/com/synapse/chat_service/common/annotation/RedisOperation.java
+chat_service/src/main/java/com/synapse/chat_service/common/aspect/RedisOperationAspect.java
+chat_service/src/main/java/com/synapse/chat_service/common/util/RedisTypeConverter.java
+chat_service/src/main/java/com/synapse/chat_service/config/JpaConfig.java
+chat_service/src/main/java/com/synapse/chat_service/config/ObjectMapperConfig.java
+chat_service/src/main/java/com/synapse/chat_service/config/RedisConfig.java
+chat_service/src/main/java/com/synapse/chat_service/config/WebSocketConfig.java
+chat_service/src/main/java/com/synapse/chat_service/controller/AiChatController.java
+chat_service/src/main/java/com/synapse/chat_service/controller/MessageController.java
+chat_service/src/main/java/com/synapse/chat_service/domain/common/BaseEntity.java
+chat_service/src/main/java/com/synapse/chat_service/domain/common/BaseTimeEntity.java
+chat_service/src/main/java/com/synapse/chat_service/domain/entity/ChatUsage.java
+chat_service/src/main/java/com/synapse/chat_service/domain/entity/Conversation.java
+chat_service/src/main/java/com/synapse/chat_service/domain/entity/enums/SenderType.java
+chat_service/src/main/java/com/synapse/chat_service/domain/entity/enums/SubscriptionType.java
+chat_service/src/main/java/com/synapse/chat_service/domain/entity/Message.java
+chat_service/src/main/java/com/synapse/chat_service/domain/repository/ChatUsageRepository.java
+chat_service/src/main/java/com/synapse/chat_service/domain/repository/ConversationRepository.java
+chat_service/src/main/java/com/synapse/chat_service/domain/repository/MessageRepository.java
+chat_service/src/main/java/com/synapse/chat_service/dto/request/MessageRequest.java
+chat_service/src/main/java/com/synapse/chat_service/dto/response/MessageResponse.java
+chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/BadRequestException.java
+chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/BusinessException.java
+chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/NotFoundException.java
+chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/RedisOperationException.java
+chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/ValidException.java
+chat_service/src/main/java/com/synapse/chat_service/exception/domain/ExceptionType.java
+chat_service/src/main/java/com/synapse/chat_service/exception/dto/ExceptionResponse.java
+chat_service/src/main/java/com/synapse/chat_service/exception/service/GlobalExceptionHandler.java
+chat_service/src/main/java/com/synapse/chat_service/service/MessageService.java
+chat_service/src/main/java/com/synapse/chat_service/session/dto/AiChatInfo.java
+chat_service/src/main/java/com/synapse/chat_service/session/dto/SessionInfo.java
+chat_service/src/main/java/com/synapse/chat_service/session/dto/SessionStatus.java
+chat_service/src/main/java/com/synapse/chat_service/session/RedisAiChatManager.java
+chat_service/src/main/java/com/synapse/chat_service/session/RedisKeyGenerator.java
+chat_service/src/main/java/com/synapse/chat_service/session/RedisSessionManager.java
+chat_service/src/main/java/com/synapse/chat_service/session/SessionProperties.java
+chat_service/src/main/java/com/synapse/chat_service/session/WebSocketSessionFacade.java
+chat_service/src/main/resources/application-local.yml
+chat_service/src/main/resources/application.yml
+chat_service/src/main/resources/security/application-db.yml
+chat_service/src/test/java/com/synapse/chat_service/ChatServiceApplicationTests.java
+chat_service/src/test/java/com/synapse/chat_service/controller/MessageControllerTest.java
+chat_service/src/test/java/com/synapse/chat_service/domain/entity/MessageTest.java
+chat_service/src/test/java/com/synapse/chat_service/repository/ChatUsageRepositoryTest.java
+chat_service/src/test/java/com/synapse/chat_service/repository/MessageRepositoryTest.java
+chat_service/src/test/java/com/synapse/chat_service/service/MessageServiceTest.java
+chat_service/src/test/java/com/synapse/chat_service/testutil/TestObjectFactory.java
+chat_service/src/test/resources/application-test.yml
+chat_service/src/test/resources/application.yml
+README.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/common/annotation/RedisOperation.java">
+package com.synapse.chat_service.common.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Redis 작업에 대한 공통 예외 처리를 위한 어노테이션
+ */
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RedisOperation {
+    
+    /**
+     * 작업 설명 (로깅용)
+     */
+    String value() default "";
+    
+    /**
+     * 예외 발생 시 기본값 반환 여부
+     */
+    boolean returnDefaultOnError() default false;
+    
+    /**
+     * 예외를 다시 던질지 여부
+     */
+    boolean rethrowException() default true;
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/common/aspect/RedisOperationAspect.java">
+package com.synapse.chat_service.common.aspect;
+
+import com.synapse.chat_service.common.annotation.RedisOperation;
+import com.synapse.chat_service.exception.commonexception.RedisOperationException;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Aspect
+@Component
+public class RedisOperationAspect {
+    
+    @Around("@annotation(redisOperation)")
+    public Object handleRedisOperation(ProceedingJoinPoint joinPoint, RedisOperation redisOperation) throws Throwable {
+        String methodName = joinPoint.getSignature().getName();
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        String operation = redisOperation.value().isEmpty() ? methodName : redisOperation.value();
+        
+        try {
+            Object result = joinPoint.proceed();
+            log.debug("Redis 작업 성공: {}.{}", className, operation);
+            return result;
+            
+        } catch (Exception e) {
+            log.error("Redis 작업 실패: {}.{} - 원인: {}", className, operation, e.getMessage(), e);
+            
+            if (redisOperation.returnDefaultOnError()) {
+                log.debug("Redis 작업 실패 시 기본값 반환: {}.{}", className, operation);
+                MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+                return getDefaultValue(methodSignature.getReturnType());
+            }
+            
+            if (redisOperation.rethrowException()) {
+                // 예외 체이닝을 통해 원본 예외의 스택 트레이스 보존
+                String operationDescription = String.format("%s.%s", className, operation);
+                throw RedisOperationException.operationError(operationDescription, e);
+            }
+            
+            log.debug("Redis 작업 실패 시 null 반환: {}.{}", className, operation);
+            return null;
+        }
+    }
+    
+    private Object getDefaultValue(Class<?> returnType) {
+        if (returnType == boolean.class || returnType == Boolean.class) {
+            return false;
+        }
+        if (returnType == int.class || returnType == Integer.class) {
+            return 0;
+        }
+        if (returnType == long.class || returnType == Long.class) {
+            return 0L;
+        }
+        return null;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/common/util/RedisTypeConverter.java">
+package com.synapse.chat_service.common.util;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class RedisTypeConverter {
+
+    private final ObjectMapper objectMapper;
+
+    /**
+     * Redis에서 조회한 원시 값을 지정된 타입으로 안전하게 변환
+     * 
+     * @param rawValue Redis에서 조회한 원시 값
+     * @param targetType 변환할 대상 타입
+     * @return 변환된 객체 (실패 시 null)
+     */
+    public <T> T convertValue(Object rawValue, Class<T> targetType) {
+        if (rawValue == null) {
+            return null;
+        }
+
+        try {
+            // 이미 올바른 타입인 경우
+            if (targetType.isInstance(rawValue)) {
+                return targetType.cast(rawValue);
+            }
+
+            // ObjectMapper를 사용한 타입 변환
+            return objectMapper.convertValue(rawValue, targetType);
+            
+        } catch (Exception e) {
+            log.warn("Redis 값 타입 변환 실패: rawValue={}, targetType={}", 
+                    rawValue.getClass().getSimpleName(), targetType.getSimpleName(), e);
+            return null;
+        }
+    }
+
+    /**
+     * String 타입으로 안전하게 변환
+     */
+    public String convertToString(Object rawValue) {
+        return convertValue(rawValue, String.class);
+    }
+    
+    /**
+     * 객체를 byte 배열로 변환 (Redis 트랜잭션에서 사용)
+     * 
+     * @param value 변환할 객체
+     * @return byte 배열 (실패 시 빈 배열)
+     */
+    public byte[] convertToBytes(Object value) {
+        if (value == null) {
+            return new byte[0];
+        }
+        
+        try {
+            return objectMapper.writeValueAsBytes(value);
+        } catch (Exception e) {
+            log.warn("객체를 byte 배열로 변환 실패: value={}", value.getClass().getSimpleName(), e);
+            return new byte[0];
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/config/ObjectMapperConfig.java">
+package com.synapse.chat_service.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
+/**
+ * ObjectMapper 설정 클래스
+ * 
+ * 보안 고려사항:
+ * - Default Typing은 안전하지 않은 역직렬화 취약점을 유발할 수 있어 비활성화
+ * - 다형성 타입 처리가 필요한 경우 @JsonTypeInfo와 @JsonSubTypes 어노테이션을 
+ * - 해당 클래스에 직접 사용하는 것을 권장
+ */
+@Configuration
+public class ObjectMapperConfig {
+    @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS); 
+
+        return objectMapper;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/config/RedisConfig.java">
+package com.synapse.chat_service.config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+@Configuration
+@RequiredArgsConstructor
+public class RedisConfig {
+
+    private final ObjectMapper objectMapper;
+
+    @Bean
+    public RedisTemplate<String, Object> objectRedisTemplate(RedisConnectionFactory connectionFactory) {
+        var template = new RedisTemplate<String, Object>();
+        template.setConnectionFactory(connectionFactory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
+        
+        return template;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/config/WebSocketConfig.java">
+package com.synapse.chat_service.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        // 클라이언트에서 메시지를 받을 때 사용할 prefix
+        config.setApplicationDestinationPrefixes("/app");
+        
+        // 클라이언트가 구독할 때 사용할 prefix
+        config.enableSimpleBroker("/topic", "/queue")
+                .setTaskScheduler(heartbeatScheduler())
+                .setHeartbeatValue(new long[] {10000, 10000});
+        
+        // AI 응답을 특정 사용자에게 보낼 때 사용할 prefix
+        config.setUserDestinationPrefix("/ai");
+    }
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+                .setAllowedOriginPatterns("*");  // CORS 설정: 모든 도메인 허용 (개발 환경)
+    }
+
+    @Bean
+    public ThreadPoolTaskScheduler heartbeatScheduler() {
+        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+        scheduler.setPoolSize(1);
+        scheduler.setThreadNamePrefix("ws-heartbeat-");
+        return scheduler;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/controller/AiChatController.java">
+package com.synapse.chat_service.controller;
+
+import com.synapse.chat_service.dto.response.MessageResponse;
+import com.synapse.chat_service.service.MessageService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/v1/ai-chat")
+@RequiredArgsConstructor
+public class AiChatController {
+    
+    private final MessageService messageService;
+    
+    @GetMapping("/history")
+    public ResponseEntity<List<MessageResponse.Simple>> getMyAiChatHistory(
+        @RequestHeader("X-User-Id") Long userId
+    ) {
+        List<MessageResponse.Simple> response = messageService.getMessagesByUserId(userId);
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/history/paging")
+    public ResponseEntity<Page<MessageResponse.Simple>> getMyAiChatHistoryWithPaging(
+        @RequestHeader("X-User-Id") Long userId,
+        @PageableDefault(size = 50, sort = "createdDate", direction = Sort.Direction.ASC) Pageable pageable
+    ) {
+        Page<MessageResponse.Simple> response = messageService.getMessagesByUserIdWithPaging(userId, pageable);
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/history/recent")
+    public ResponseEntity<Page<MessageResponse.Simple>> getMyAiChatHistoryRecentFirst(
+        @RequestHeader("X-User-Id") Long userId,
+        @PageableDefault(size = 50, sort = "createdDate", direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        Page<MessageResponse.Simple> response = messageService.getMessagesRecentFirst(userId, pageable);
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/search")
+    public ResponseEntity<List<MessageResponse.Simple>> searchMyAiChatHistory(
+        @RequestHeader("X-User-Id") Long userId,
+        @RequestParam String keyword
+    ) {
+        List<MessageResponse.Simple> response = messageService.searchMessages(userId, keyword);
+        return ResponseEntity.ok(response);
+    }
+    
+    @GetMapping("/stats")
+    public ResponseEntity<AiChatStatsResponse> getMyAiChatStats(
+        @RequestHeader("X-User-Id") Long userId
+    ) {
+        long messageCount = messageService.getMessageCountByUserId(userId);
+        UUID conversationId = messageService.getConversationId(userId);
+        
+        AiChatStatsResponse response = new AiChatStatsResponse(
+            conversationId,
+            messageCount
+        );
+        
+        return ResponseEntity.ok(response);
+    }
+    
+    public record AiChatStatsResponse(
+        UUID conversationId,
+        long totalMessageCount
+    ) {}
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/entity/Conversation.java">
+package com.synapse.chat_service.domain.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import com.synapse.chat_service.domain.common.BaseTimeEntity;
+
+/**
+ * 사용자와 AI 간의 1:1 대화를 나타내는 엔티티
+ * 각 사용자는 하나의 대화(Conversation)를 가지며, 이는 자동으로 생성됩니다.
+ * MSA 원칙에 따라 외부 서비스의 userId만을 참조하여 사용자 정보를 식별합니다.
+ */
+@Entity
+@Table(name = "conversations")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Conversation extends BaseTimeEntity {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "conversation_id", columnDefinition = "UUID")
+    private UUID id;
+    
+    @NotNull
+    @Column(name = "user_id", nullable = false, unique = true)
+    private Long userId;
+    
+    @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Message> messages = new ArrayList<>();
+    
+    @Builder
+    public Conversation(Long userId) {
+        this.userId = userId;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/repository/ConversationRepository.java">
+package com.synapse.chat_service.domain.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.synapse.chat_service.domain.entity.Conversation;
+
+import java.util.Optional;
+import java.util.UUID;
+
+@Repository
+public interface ConversationRepository extends JpaRepository<Conversation, UUID> {
+    
+    /**
+     * 사용자 ID로 대화 조회 (각 사용자는 하나의 대화만 가짐)
+     */
+    Optional<Conversation> findByUserId(Long userId);
+    
+    /**
+     * 사용자 ID로 대화 존재 여부 확인
+     */
+    boolean existsByUserId(Long userId);
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/RedisOperationException.java">
+package com.synapse.chat_service.exception.commonexception;
+
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+/**
+ * Redis 작업 중 발생하는 예외를 처리하는 커스텀 예외 클래스
+ * BusinessException을 상속하여 GlobalExceptionHandler에서 일관된 예외 처리가 가능합니다.
+ */
+public class RedisOperationException extends BusinessException {
+    
+    /**
+     * 커스텀 메시지와 원인 예외를 포함한 Redis 작업 예외 생성자
+     * @param exceptionType Redis 관련 예외 타입
+     * @param customMessage 사용자 정의 메시지
+     * @param cause 원인 예외
+     */
+    private RedisOperationException(ExceptionType exceptionType, String customMessage, Throwable cause) {
+        super(exceptionType, customMessage, cause);
+    }
+    
+    /**
+     * Redis 작업 오류 예외 생성 팩토리 메소드
+     * @param operation 실패한 작업명
+     * @param cause 원인 예외
+     * @return RedisOperationException 인스턴스
+     */
+    public static RedisOperationException operationError(String operation, Throwable cause) {
+        return new RedisOperationException(
+            ExceptionType.REDIS_OPERATION_ERROR, 
+            String.format("Redis 작업 실패: %s", operation), 
+            cause
+        );
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/dto/AiChatInfo.java">
+package com.synapse.chat_service.session.dto;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+/**
+ * AI 채팅 정보를 저장하는 Record
+ * Redis에서 현재 활성화된 WebSocket 세션과 관련된 상태 정보 및 캐시 역할을 합니다.
+ * 데이터베이스의 Conversation 엔티티가 영구적인 저장소(Source of Truth) 역할을 하며,
+ * 이 레코드는 자주 접근하지만 휘발되어도 괜찮은 메타데이터를 저장하여 DB 조회를 줄입니다.
+ * 
+ * @param userId 사용자 ID
+ * @param conversationId 실제 데이터베이스의 Conversation UUID (Redis와 DB 간 일관성 보장)
+ * @param createdAt 채팅방 생성 시간
+ * @param lastActivityAt 마지막 활동 시간
+ * @param messageCount 총 메시지 수 (선택적 통계)
+ */
+public record AiChatInfo(
+        String userId,
+        UUID conversationId,
+        LocalDateTime createdAt,
+        LocalDateTime lastActivityAt,
+        Long messageCount
+) {
+    
+    /**
+     * 새로운 AI 채팅 생성을 위한 팩토리 메서드
+     * 실제 데이터베이스의 Conversation UUID를 사용하여 Redis와 DB 간 일관성을 보장합니다.
+     */
+    public static AiChatInfo create(String userId, UUID conversationId) {
+        LocalDateTime now = LocalDateTime.now();
+        
+        return new AiChatInfo(
+                userId,
+                conversationId,
+                now,
+                now,
+                0L
+        );
+    }
+    
+    /**
+     * 마지막 활동 시간 업데이트
+     */
+    public AiChatInfo updateLastActivity() {
+        return new AiChatInfo(
+                userId,
+                conversationId,
+                createdAt,
+                LocalDateTime.now(),
+                messageCount
+        );
+    }
+    
+    /**
+     * 메시지 수 증가
+     */
+    public AiChatInfo incrementMessageCount() {
+        return new AiChatInfo(
+                userId,
+                conversationId,
+                createdAt,
+                LocalDateTime.now(),
+                messageCount + 1
+        );
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/dto/SessionInfo.java">
+package com.synapse.chat_service.session.dto;
+
+import java.time.LocalDateTime;
+
+/**
+ * AI 채팅 WebSocket 세션 정보를 저장하는 Record
+ * Redis에 JSON 형태로 직렬화되어 저장됩니다.
+ * 
+ * @param sessionId WebSocket 세션 ID
+ * @param userId 사용자 ID
+ * @param username 사용자 이름
+ * @param connectedAt 세션 연결 시간
+ * @param lastActivityAt 마지막 활동 시간
+ * @param status 세션 상태 (CONNECTED, DISCONNECTED, IDLE)
+ * @param clientInfo 클라이언트 정보 (브라우저, 모바일 앱 등)
+ */
+public record SessionInfo(
+        String sessionId,
+        String userId,
+        String username,
+        LocalDateTime connectedAt,
+        LocalDateTime lastActivityAt,
+        SessionStatus status,
+        String clientInfo
+) {
+    
+    /**
+     * 새로운 AI 채팅 세션 생성을 위한 팩토리 메서드
+     */
+    public static SessionInfo create(String sessionId, String userId, String username, String clientInfo) {
+        LocalDateTime now = LocalDateTime.now();
+        return new SessionInfo(
+                sessionId,
+                userId,
+                username,
+                now,
+                now,
+                SessionStatus.CONNECTED,
+                clientInfo
+        );
+    }
+    
+    /**
+     * 마지막 활동 시간 업데이트
+     */
+    public SessionInfo updateLastActivity() {
+        return new SessionInfo(
+                sessionId,
+                userId,
+                username,
+                connectedAt,
+                LocalDateTime.now(),
+                status,
+                clientInfo
+        );
+    }
+    
+    /**
+     * 세션 상태 변경
+     */
+    public SessionInfo changeStatus(SessionStatus newStatus) {
+        return new SessionInfo(
+                sessionId,
+                userId,
+                username,
+                connectedAt,
+                LocalDateTime.now(),
+                newStatus,
+                clientInfo
+        );
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/dto/SessionStatus.java">
+package com.synapse.chat_service.session.dto;
+
+/**
+ * WebSocket 세션의 상태를 나타내는 열거형
+ */
+public enum SessionStatus {
+    
+    /**
+     * 연결된 상태 - 정상적으로 WebSocket 연결이 활성화된 상태
+     */
+    CONNECTED,
+    
+    /**
+     * 연결 해제된 상태 - WebSocket 연결이 종료된 상태
+     */
+    DISCONNECTED,
+    
+    /**
+     * 유휴 상태 - 연결은 유지되지만 일정 시간 동안 활동이 없는 상태
+     */
+    IDLE,
+    
+    /**
+     * 재연결 중 상태 - 네트워크 문제 등으로 재연결을 시도하는 상태
+     */
+    RECONNECTING
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/RedisAiChatManager.java">
+package com.synapse.chat_service.session;
+
+import com.synapse.chat_service.common.annotation.RedisOperation;
+import com.synapse.chat_service.common.util.RedisTypeConverter;
+import com.synapse.chat_service.session.dto.AiChatInfo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import java.time.Duration;
+import java.util.Optional;
+import java.util.UUID;
+
+/**
+ * AI 채팅 세션을 Redis로 관리하는 매니저
+ * 사용자와 AI 간의 1:1 채팅 세션 정보를 관리합니다.
+ */
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class RedisAiChatManager {
+
+    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisKeyGenerator keyGenerator;
+    private final RedisTypeConverter typeConverter;
+    
+    // AI 채팅 정보는 30일간 유지 (사용자가 다시 접속할 수 있도록)
+    private static final Duration AI_CHAT_EXPIRATION = Duration.ofDays(30);
+    
+    /**
+     * AI 채팅 정보 조회
+     */
+    @RedisOperation(value = "AI 채팅 정보 조회", returnDefaultOnError = true)
+    public Optional<AiChatInfo> getAiChat(String userId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        Object rawValue = redisTemplate.opsForValue().get(key);
+        AiChatInfo aiChat = typeConverter.convertValue(rawValue, AiChatInfo.class);
+        return Optional.ofNullable(aiChat);
+    }
+    
+    /**
+     * AI 채팅 활동 시간 업데이트
+     */
+    @RedisOperation(value = "AI 채팅 활동 시간 업데이트", rethrowException = false)
+    public void updateAiChatActivity(String userId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        Object rawValue = redisTemplate.opsForValue().get(key);
+        AiChatInfo aiChat = typeConverter.convertValue(rawValue, AiChatInfo.class);
+        
+        if (aiChat != null) {
+            AiChatInfo updatedChat = aiChat.updateLastActivity();
+            redisTemplate.opsForValue().set(key, updatedChat, AI_CHAT_EXPIRATION);
+            
+            log.debug("AI 채팅 활동 시간 업데이트: userId={}", userId);
+        }
+    }
+    
+    /**
+     * AI 채팅 메시지 수 증가
+     */
+    @RedisOperation(value = "AI 채팅 메시지 수 증가", rethrowException = false)
+    public void incrementMessageCount(String userId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        Object rawValue = redisTemplate.opsForValue().get(key);
+        AiChatInfo aiChat = typeConverter.convertValue(rawValue, AiChatInfo.class);
+        
+        if (aiChat != null) {
+            AiChatInfo updatedChat = aiChat.incrementMessageCount();
+            redisTemplate.opsForValue().set(key, updatedChat, AI_CHAT_EXPIRATION);
+            
+            log.debug("AI 채팅 메시지 수 증가: userId={}, count={}", 
+                    userId, updatedChat.messageCount());
+        }
+    }
+    
+    /**
+     * AI 채팅 정보 삭제 (사용자 탈퇴 등의 경우)
+     */
+    @RedisOperation(value = "AI 채팅 정보 삭제", rethrowException = false)
+    public void deleteAiChat(String userId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        redisTemplate.delete(key);
+        
+        log.info("AI 채팅 정보 삭제: userId={}", userId);
+    }
+    
+    /**
+     * 실제 Conversation UUID를 사용하여 AI 채팅 세션 생성 또는 업데이트
+     * Redis와 DB 간의 일관성을 보장합니다.
+     */
+    @RedisOperation("UUID 기반 AI 채팅 세션 생성/업데이트")
+    public AiChatInfo createOrUpdateAiChatWithConversation(String userId, UUID conversationId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        
+        // 1. 기존 AI 채팅 정보 조회
+        Object rawValue = redisTemplate.opsForValue().get(key);
+        AiChatInfo existingChat = typeConverter.convertValue(rawValue, AiChatInfo.class);
+        
+        if (existingChat != null) {
+            // 기존 채팅이 있으면 conversationId 업데이트 및 활동 시간 갱신
+            AiChatInfo updatedChat = new AiChatInfo(
+                    existingChat.userId(),
+                    conversationId, // 실제 DB의 UUID로 업데이트
+                    existingChat.createdAt(),
+                    java.time.LocalDateTime.now(), // 활동 시간 갱신
+                    existingChat.messageCount()
+            );
+            redisTemplate.opsForValue().set(key, updatedChat, AI_CHAT_EXPIRATION);
+            
+            log.debug("AI 채팅 정보 업데이트: userId={}, conversationId={}", 
+                    userId, conversationId);
+            return updatedChat;
+        }
+        
+        // 2. 새로운 AI 채팅 정보 생성
+        AiChatInfo newChat = AiChatInfo.create(userId, conversationId);
+        redisTemplate.opsForValue().set(key, newChat, AI_CHAT_EXPIRATION);
+        
+        log.info("새로운 AI 채팅 정보 생성: userId={}, conversationId={}", 
+                userId, conversationId);
+        return newChat;
+    }
+    
+    /**
+     * 기존 Redis 정보의 conversationId를 실제 DB UUID와 동기화
+     */
+    @RedisOperation(value = "Conversation ID 동기화", rethrowException = false)
+    public void syncConversationId(String userId, UUID conversationId) {
+        String key = keyGenerator.generateAIConversationKey(userId);
+        Object rawValue = redisTemplate.opsForValue().get(key);
+        AiChatInfo aiChat = typeConverter.convertValue(rawValue, AiChatInfo.class);
+        
+        if (aiChat != null && !conversationId.equals(aiChat.conversationId())) {
+            // conversationId가 다르면 동기화
+            AiChatInfo syncedChat = new AiChatInfo(
+                    aiChat.userId(),
+                    conversationId, // 실제 DB의 UUID로 동기화
+                    aiChat.createdAt(),
+                    java.time.LocalDateTime.now(), // 활동 시간 갱신
+                    aiChat.messageCount()
+            );
+            redisTemplate.opsForValue().set(key, syncedChat, AI_CHAT_EXPIRATION);
+            
+            log.info("Conversation ID 동기화: userId={}, oldId={}, newId={}", 
+                    userId, aiChat.conversationId(), conversationId);
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/RedisKeyGenerator.java">
+package com.synapse.chat_service.session;
+
+import org.springframework.stereotype.Component;
+
+/**
+ * Redis 키 생성 전략을 담당하는 유틸리티 클래스
+ * 일관된 키 네이밍 규칙을 통해 Redis 데이터 관리의 효율성을 높입니다.
+ */
+@Component
+public class RedisKeyGenerator {
+    
+    // 키 접두사 상수
+    private static final String SESSION_PREFIX = "session:";
+    private static final String USER_SESSION_PREFIX = "user:session:";
+    private static final String AI_CONVERSATION_PREFIX = "ai:conversation:";
+    
+    /**
+     * WebSocket 세션 키 생성
+     * @param sessionId WebSocket 세션 ID
+     * @return Redis 키 (예: "session:abc123")
+     */
+    public String generateSessionKey(String sessionId) {
+        return SESSION_PREFIX + sessionId;
+    }
+    
+    /**
+     * 사용자별 세션 키 생성
+     * @param userId 사용자 ID
+     * @return Redis 키 (예: "user:session:user123")
+     */
+    public String generateUserSessionKey(String userId) {
+        return USER_SESSION_PREFIX + userId;
+    }
+    
+
+    
+    /**
+     * AI 대화 세션 키 생성
+     * @param userId 사용자 ID
+     * @return Redis 키 (예: "ai:conversation:user123")
+     */
+    public String generateAIConversationKey(String userId) {
+        return AI_CONVERSATION_PREFIX + userId;
+    }
+    
+    /**
+     * AI 채팅 정보 키 생성
+     * 패턴: "ai:chat:{userId}"
+     */
+    public String generateAiChatKey(String userId) {
+        return "ai:chat:" + userId;
+    }
+    
+    /**
+     * 패턴 매칭을 위한 와일드카드 키 생성
+     * @param prefix 접두사
+     * @return 와일드카드 패턴 (예: "session:*")
+     */
+    public String generatePatternKey(String prefix) {
+        return prefix + "*";
+    }
+    
+    /**
+     * 모든 세션 키 패턴
+     * @return "session:*"
+     */
+    public String getAllSessionsPattern() {
+        return generatePatternKey(SESSION_PREFIX);
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/RedisSessionManager.java">
+package com.synapse.chat_service.session;
+
+import com.synapse.chat_service.common.annotation.RedisOperation;
+import com.synapse.chat_service.common.util.RedisTypeConverter;
+import com.synapse.chat_service.session.dto.SessionInfo;
+import com.synapse.chat_service.session.dto.SessionStatus;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+/**
+ * Redis를 사용한 WebSocket 세션 관리 서비스
+ * 다중 기기 동시 접속을 지원하는 세션의 생성, 조회, 업데이트, 삭제를 담당합니다.
+ */
+@Slf4j
+@Service
+@RequiredArgsConstructor
+@EnableConfigurationProperties(SessionProperties.class)
+public class RedisSessionManager {
+
+    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisKeyGenerator keyGenerator;
+    private final RedisTypeConverter typeConverter;
+    private final SessionProperties sessionProperties;
+    
+    /**
+     * 새로운 세션 생성 (다중 세션 지원, 트랜잭션 원자성 보장)
+     */
+    @RedisOperation("세션 생성")
+    public void createSession(SessionInfo sessionInfo) {
+        String sessionKey = keyGenerator.generateSessionKey(sessionInfo.sessionId());
+        String userSessionKey = keyGenerator.generateUserSessionKey(sessionInfo.userId());
+        
+        // 최대 세션 수 확인 및 제한
+        int currentSessionCount = getActiveSessionCount(sessionInfo.userId());
+        if (currentSessionCount >= sessionProperties.maxSessionsPerUser()) {
+            // 가장 오래된 세션 하나를 제거
+            removeOldestSession(sessionInfo.userId());
+            log.info("최대 세션 수 초과로 가장 오래된 세션 제거: userId={}", sessionInfo.userId());
+        }
+        
+        // Redis 트랜잭션을 사용하여 원자성 보장
+        redisTemplate.execute((RedisCallback<Object>) connection -> {
+            try {
+                // 트랜잭션 시작
+                connection.multi();
+                
+                // 1. 세션 정보 저장 (설정된 시간 TTL)
+                byte[] sessionKeyBytes = sessionKey.getBytes();
+                byte[] sessionValueBytes = typeConverter.convertToBytes(sessionInfo);
+                connection.stringCommands().setEx(sessionKeyBytes, Duration.ofHours(sessionProperties.expirationHours()).toSeconds(), sessionValueBytes);
+
+                // 2. 사용자별 세션 Set에 sessionId 추가
+                byte[] userSessionKeyBytes = userSessionKey.getBytes();
+                byte[] sessionIdBytes = sessionInfo.sessionId().getBytes();
+                connection.setCommands().sAdd(userSessionKeyBytes, sessionIdBytes);
+
+                // 3. 사용자 세션 Set TTL 설정 (설정된 시간)
+                connection.keyCommands().expire(userSessionKeyBytes, Duration.ofHours(sessionProperties.expirationHours()).toSeconds());
+                
+                // 트랜잭션 실행
+                connection.exec();
+                
+                log.info("세션 생성 완료 (트랜잭션): sessionId={}, userId={}, 총 세션 수={}", 
+                        sessionInfo.sessionId(), sessionInfo.userId(), currentSessionCount + 1);
+                
+                return null;
+                
+            } catch (Exception e) {
+                log.error("세션 생성 트랜잭션 실패: sessionId={}, userId={}", 
+                         sessionInfo.sessionId(), sessionInfo.userId(), e);
+                throw new RuntimeException("세션 생성 트랜잭션 실패", e);
+            }
+        });
+    }
+    
+    /**
+     * 세션 ID로 세션 조회
+     */
+    @RedisOperation("세션 조회")
+    public SessionInfo getSession(String sessionId) {
+        String sessionKey = keyGenerator.generateSessionKey(sessionId);
+        Object rawValue = redisTemplate.opsForValue().get(sessionKey);
+        SessionInfo sessionInfo = typeConverter.convertValue(rawValue, SessionInfo.class);
+        
+        log.debug("세션 조회: sessionId={}, found={}", sessionId, sessionInfo != null);
+        return sessionInfo;
+    }
+    
+    /**
+     * 사용자 ID로 세션 정보 조회 (첫 번째 세션 반환)
+     */
+    @RedisOperation("사용자 세션 조회")
+    public SessionInfo getSessionByUserId(String userId) {
+        String userSessionKey = keyGenerator.generateUserSessionKey(userId);
+        Set<Object> sessionIds = redisTemplate.opsForSet().members(userSessionKey);
+        
+        if (sessionIds == null || sessionIds.isEmpty()) {
+            log.debug("사용자 세션 ID를 찾을 수 없음: userId={}", userId);
+            return null;
+        }
+        
+        // 첫 번째 세션 반환 (기존 호환성 유지)
+        String sessionId = typeConverter.convertToString(sessionIds.iterator().next());
+        return getSession(sessionId);
+    }
+    
+    /**
+     * 세션 정보 업데이트
+     */
+    @RedisOperation("세션 업데이트")
+    public void updateSession(SessionInfo sessionInfo) {
+        String sessionKey = keyGenerator.generateSessionKey(sessionInfo.sessionId());
+        
+        // 세션 정보 업데이트 (설정된 시간 TTL)
+        redisTemplate.opsForValue().set(sessionKey, sessionInfo, Duration.ofHours(sessionProperties.expirationHours()));
+        
+        log.debug("세션 업데이트 완료: sessionId={}", sessionInfo.sessionId());
+    }
+
+    /**
+     * 세션 삭제 (다중 세션 지원, 트랜잭션 원자성 보장)
+     */
+    @RedisOperation("세션 삭제")
+    public void deleteSession(String sessionId) {
+        SessionInfo sessionInfo = getSession(sessionId);
+        if (sessionInfo != null) {
+            String sessionKey = keyGenerator.generateSessionKey(sessionId);
+            String userSessionKey = keyGenerator.generateUserSessionKey(sessionInfo.userId());
+            
+            // Redis 트랜잭션으로 원자성 보장
+            redisTemplate.execute((RedisCallback<Object>) connection -> {
+                try {
+                    // 트랜잭션 시작
+                    connection.multi();
+                    
+                    // 1. 개별 세션 삭제
+                    byte[] sessionKeyBytes = sessionKey.getBytes();
+                    connection.keyCommands().del(sessionKeyBytes);
+                    
+                    // 2. 사용자 세션 Set에서 해당 sessionId 제거
+                    byte[] userSessionKeyBytes = userSessionKey.getBytes();
+                    byte[] sessionIdBytes = sessionId.getBytes();
+                    connection.setCommands().sRem(userSessionKeyBytes, sessionIdBytes);
+                    
+                    // 트랜잭션 실행
+                    connection.exec();
+                    
+                    log.info("세션 삭제 완료 (트랜잭션): sessionId={}, userId={}", sessionId, sessionInfo.userId());
+                    
+                    return null;
+                    
+                } catch (Exception e) {
+                    log.error("세션 삭제 트랜잭션 실패: sessionId={}, userId={}", 
+                             sessionId, sessionInfo.userId(), e);
+                    throw new RuntimeException("세션 삭제 트랜잭션 실패", e);
+                }
+            });
+        }
+    }
+    
+    /**
+     * 사용자의 모든 세션 강제 삭제 (관리자 기능)
+     */
+    @RedisOperation(value = "사용자 모든 세션 삭제", rethrowException = false)
+    public void deleteAllUserSessions(String userId) {
+        String userSessionKey = keyGenerator.generateUserSessionKey(userId);
+        
+        // 1. 모든 세션 ID 조회
+        Set<Object> sessionIds = redisTemplate.opsForSet().members(userSessionKey);
+        
+        if (sessionIds != null && !sessionIds.isEmpty()) {
+            // 2. 각 세션 개별 삭제
+            for (Object sessionIdObj : sessionIds) {
+                String sessionId = typeConverter.convertToString(sessionIdObj);
+                if (sessionId != null) {
+                    String sessionKey = keyGenerator.generateSessionKey(sessionId);
+                    redisTemplate.delete(sessionKey);
+                    log.debug("세션 삭제: sessionId={}", sessionId);
+                }
+            }
+        }
+        
+        // 3. 사용자-세션 Set 삭제
+        redisTemplate.delete(userSessionKey);
+        log.info("사용자 모든 세션 삭제 완료: userId={}, 삭제된 세션 수={}", 
+                userId, sessionIds != null ? sessionIds.size() : 0);
+    }
+    
+    /**
+     * 세션 상태 변경
+     */
+    @RedisOperation("세션 상태 변경")
+    public void changeSessionStatus(String sessionId, SessionStatus newStatus) {
+        SessionInfo currentSession = getSession(sessionId);
+        if (currentSession != null) {
+            SessionInfo updatedSession = currentSession.changeStatus(newStatus);
+            updateSession(updatedSession);
+            log.info("세션 상태 변경: sessionId={}, status={}", sessionId, newStatus);
+        }
+    }
+    
+    /**
+     * 세션 존재 여부 확인
+     */
+    @RedisOperation(value = "세션 존재 확인", returnDefaultOnError = true)
+    public boolean existsSession(String sessionId) {
+        String sessionKey = keyGenerator.generateSessionKey(sessionId);
+        return Boolean.TRUE.equals(redisTemplate.hasKey(sessionKey));
+    }
+    
+    /**
+     * 사용자 세션 존재 여부 확인 (다중 세션 지원)
+     */
+    @RedisOperation(value = "사용자 세션 존재 확인", returnDefaultOnError = true)
+    public boolean existsSessionByUserId(String userId) {
+        String userSessionKey = keyGenerator.generateUserSessionKey(userId);
+        Long sessionCount = redisTemplate.opsForSet().size(userSessionKey);
+        return sessionCount != null && sessionCount > 0;
+    }
+    
+    /**
+     * 사용자의 모든 세션 정보 조회
+     */
+    @RedisOperation("사용자 모든 세션 조회")
+    public List<SessionInfo> getSessionsByUserId(String userId) {
+        String userSessionKey = keyGenerator.generateUserSessionKey(userId);
+        Set<Object> sessionIds = redisTemplate.opsForSet().members(userSessionKey);
+        
+        if (sessionIds == null || sessionIds.isEmpty()) {
+            log.debug("사용자 세션을 찾을 수 없음: userId={}", userId);
+            return List.of();
+        }
+        
+        return sessionIds.stream()
+                .map(sessionIdObj -> typeConverter.convertToString(sessionIdObj))
+                .filter(sessionId -> sessionId != null)
+                .map(this::getSession)
+                .filter(sessionInfo -> sessionInfo != null)
+                .collect(Collectors.toList());
+    }
+    
+    /**
+     * 사용자의 활성 세션 수 조회
+     */
+    @RedisOperation(value = "활성 세션 수 조회", returnDefaultOnError = true)
+    public int getActiveSessionCount(String userId) {
+        String userSessionKey = keyGenerator.generateUserSessionKey(userId);
+        Long sessionCount = redisTemplate.opsForSet().size(userSessionKey);
+        return sessionCount != null ? sessionCount.intValue() : 0;
+    }
+    
+    /**
+     * 가장 오래된 세션 제거 (최대 세션 수 초과 시 사용)
+     */
+    @RedisOperation(value = "가장 오래된 세션 제거", rethrowException = false)
+    private void removeOldestSession(String userId) {
+        List<SessionInfo> sessions = getSessionsByUserId(userId);
+        if (!sessions.isEmpty()) {
+            // 가장 오래된 세션 찾기 (연결 시간 기준)
+            SessionInfo oldestSession = sessions.stream()
+                    .min((s1, s2) -> s1.connectedAt().compareTo(s2.connectedAt()))
+                    .orElse(null);
+            
+            if (oldestSession != null) {
+                deleteSession(oldestSession.sessionId());
+                log.info("가장 오래된 세션 제거: sessionId={}, userId={}", 
+                        oldestSession.sessionId(), userId);
+            }
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/SessionProperties.java">
+package com.synapse.chat_service.session;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
+
+import jakarta.validation.constraints.Min;
+
+/**
+ * 세션 관련 설정 프로퍼티
+ * 
+ * @param expirationHours 세션 만료 시간 (시간 단위)
+ * @param maxSessionsPerUser 사용자당 최대 세션 수
+ */
+@Validated
+@ConfigurationProperties(prefix = "session")
+public record SessionProperties(
+    @Min(value = 1, message = "세션 만료 시간은 최소 1시간 이상이어야 합니다.")
+    int expirationHours,
+    
+    @Min(value = 1, message = "사용자당 최대 세션 수는 최소 1개 이상이어야 합니다.")
+    int maxSessionsPerUser
+) {
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/session/WebSocketSessionFacade.java">
+package com.synapse.chat_service.session;
+
+import com.synapse.chat_service.session.dto.SessionInfo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+/**
+ * AI 채팅 WebSocket 세션 관리를 위한 Facade 클래스
+ * AI와의 1:1 채팅에 최적화된 간단한 세션 관리 로직을 제공합니다.
+ */
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class WebSocketSessionFacade {
+    
+    private final RedisSessionManager sessionManager;
+    private final RedisAiChatManager aiChatManager;
+    
+    /**
+     * 사용자 연결 처리
+     * 1. 새로운 세션 생성 (다중 기기 동시 접속 지원)
+     * 2. AI 채팅 정보 조회 (MessageService에서 DB와 Redis 동기화 처리)
+     */
+    public SessionInfo handleUserConnection(String sessionId, String userId, String username, String clientInfo) {
+        log.info("AI 채팅 사용자 연결 처리 시작: sessionId={}, userId={}", sessionId, userId);
+        
+        // 1. 새로운 세션 생성 (다중 세션 지원)
+        SessionInfo sessionInfo = SessionInfo.create(sessionId, userId, username, clientInfo);
+        sessionManager.createSession(sessionInfo);
+        
+        // 2. AI 채팅 정보 조회 (MessageService에서 DB와 Redis 동기화가 이미 처리됨)
+        // 기존 정보가 있으면 활동 시간만 업데이트
+        aiChatManager.updateAiChatActivity(userId);
+        
+        log.info("AI 채팅 사용자 연결 처리 완료: sessionId={}, userId={}", sessionId, userId);
+        
+        return sessionInfo;
+    }
+    
+    /**
+     * 사용자 연결 해제 처리
+     * 1. 세션 정보 조회
+     * 2. AI 채팅 활동 시간 업데이트
+     * 3. 세션 삭제
+     */
+    public void handleUserDisconnection(String sessionId) {
+        log.info("AI 채팅 사용자 연결 해제 처리 시작: sessionId={}", sessionId);
+        
+        // 1. 세션 정보 조회
+        SessionInfo sessionInfo = sessionManager.getSession(sessionId);
+        if (sessionInfo == null) {
+            log.warn("연결 해제 시 세션을 찾을 수 없음: sessionId={}", sessionId);
+            return;
+        }
+        
+        // 2. AI 채팅 활동 시간 업데이트 (rethrowException = false)
+        aiChatManager.updateAiChatActivity(sessionInfo.userId());
+        
+        // 3. 세션 삭제
+        sessionManager.deleteSession(sessionId);
+        
+        log.info("AI 채팅 사용자 연결 해제 처리 완료: sessionId={}, userId={}", 
+                sessionId, sessionInfo.userId());
+    }
+    
+    /**
+     * 메시지 활동 처리
+     * 1. AI 채팅 메시지 수 증가
+     * 2. AI 채팅 활동 시간 업데이트
+     */
+    public void handleMessageActivity(String userId) {
+        log.debug("AI 채팅 메시지 활동 처리: userId={}", userId);
+        
+        // 1. AI 채팅 메시지 수 증가 (rethrowException = false)
+        aiChatManager.incrementMessageCount(userId);
+        
+        // 2. AI 채팅 활동 시간 업데이트 (rethrowException = false)
+        aiChatManager.updateAiChatActivity(userId);
+    }
+
+    /**
+     * 세션 활동 업데이트
+     */
+    public void updateSessionActivity(String sessionId) {
+        log.debug("세션 활동 업데이트: sessionId={}", sessionId);
+        
+        SessionInfo sessionInfo = sessionManager.getSession(sessionId);
+        if (sessionInfo != null) {
+            SessionInfo updatedSession = sessionInfo.updateLastActivity();
+            sessionManager.updateSession(updatedSession);
+        }
+    }
+    
+    /**
+     * 사용자의 대화 ID 조회
+     */
+    public String getConversationId(String userId) {
+        return aiChatManager.getAiChat(userId)
+                .map(aiChat -> aiChat.conversationId().toString())
+                .orElse("ai-chat-" + userId); // 기본 패턴 반환 (호환성 유지)
+    }
+    
+    /**
+     * 사용자의 모든 세션 강제 삭제 (관리자 기능)
+     */
+    public void forceDeleteAllUserSessions(String userId) {
+        log.info("사용자 모든 세션 강제 삭제: userId={}", userId);
+        // deleteAllUserSessions는 rethrowException = false로 설정되어 예외를 던지지 않음
+        sessionManager.deleteAllUserSessions(userId);
+    }
+}
+</file>
+
+<file path=".github/ISSUE_TEMPLATE/bug-template.yml">
+name: 🐛 버그 리포트 (Bug Report)
+description: 발생한 버그를 상세히 기록하여 빠르게 해결할 수 있도록 합니다.
+title: "fix: [버그 요약]"
+labels: bug
+assignees: []
+
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 🐞 버그 설명
+      description: 어떤 버그인지 명확하게 설명해주세요.
+      placeholder: "예: 특정 조건에서 로그인 버튼 클릭 시 페이지가 응답하지 않습니다."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 버그 재현 방법
+      description: 버그를 재현할 수 있는 단계를 순서대로 작성해주세요. (최대한 상세하게)
+      placeholder: |
+        1. '/login' 페이지로 이동합니다.
+        2. 아이디 입력 필드에 'testuser'를 입력합니다.
+        3. 비밀번호는 비워둡니다.
+        4. 로그인 버튼을 클릭합니다.
+        5. (예상 결과: '비밀번호를 입력해주세요' 알림 / 실제 결과: 페이지 무응답)
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: ✅ 예상 동작
+      description: 원래 어떤 결과가 나와야 한다고 생각하는지 설명해주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: 💥 실제 동작 (및 오류 메시지)
+      description: 실제로 어떤 결과가 발생했는지, 오류 메시지가 있다면 함께 작성해주세요.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 💻 사용 환경 (선택)
+      description: 버그가 발생한 환경을 알려주세요. (브라우저 종류 및 버전, OS 등)
+      placeholder: |
+        - OS: Windows 11
+        - Browser: Chrome 1XX.X.XXXX.XX
+        - Node.js version: vXX.X.X (백엔드 버그의 경우)
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 스크린샷 (선택)
+      description: 가능하다면 버그 상황을 보여주는 스크린샷을 첨부해주세요. (이미지 직접 업로드 또는 링크)
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 💡 추가 정보 (선택)
+      description: 문제 해결에 도움이 될 만한 추가적인 정보가 있다면 작성해주세요.
+    validations:
+      required: false
+</file>
+
+<file path=".github/ISSUE_TEMPLATE/discussion-template.yml">
+name: 💬 토론 및 아이디어 기록 (Discussion / Idea Log)
+description: 아이디어를 기록하거나 특정 주제에 대해 스스로 고민하고 결정하는 과정을 남깁니다.
+title: "chore: [토론/아이디어 주제 요약]"
+labels: discussion, idea
+assignees: []
+
+body:
+  - type: textarea
+    id: topic
+    attributes:
+      label: 📌 주제 / 문제 상황
+      description: 어떤 아이디어나 문제에 대해 고민하고 있는지 설명해주세요.
+      placeholder: "예: 사용자 알림 시스템 구현 방식 고민"
+    validations:
+      required: true
+  - type: textarea
+    id: thoughts
+    attributes:
+      label: 💭 나의 생각 / 현재 접근 방식
+      description: 현재까지의 생각, 고려 중인 해결책, 장단점 등을 자유롭게 작성해주세요.
+      placeholder: |
+        1. WebSocket 사용 방안
+           - 장점: 실시간 양방향 통신 가능
+           - 단점: 서버 부하, 구현 복잡도
+        2. SSE (Server-Sent Events) 사용 방안
+           - 장점: 단방향, 구현 상대적 용이
+           - 단점: ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: questions-to-self
+    attributes:
+      label: 🤔 스스로에게 던지는 질문 / 더 조사할 내용
+      description: 결정을 내리거나 아이디어를 구체화하기 위해 더 고민하거나 조사해야 할 내용을 적어보세요.
+      placeholder: |
+        - 현재 프로젝트 규모에 WebSocket이 적합할까?
+        - SSE 사용 시 단점은 무엇이며, 극복 가능한가?
+        - 관련 라이브러리나 참고할 만한 오픈소스 프로젝트는?
+    validations:
+      required: false
+  - type: textarea
+    id: decision-log
+    attributes:
+      label: 💡 결정 사항 (선택 - 추후 업데이트)
+      description: 고민 끝에 내린 결정이나 최종 아이디어를 기록합니다.
+    validations:
+      required: false
+</file>
+
+<file path=".github/ISSUE_TEMPLATE/feature-template.yml">
+name: ✨ 기능 요청 (Feature Request)
+description: 새로운 기능을 제안하고 개발 계획을 세웁니다.
+title: "feat: [기능 요약]"
+labels: enhancement
+assignees: []
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 기능 설명
+      description: 어떤 기능을 만들고 싶은지, 왜 필요한지 설명해주세요. (사용자 스토리 형식도 좋습니다)
+      placeholder: "예: 사용자로서 프로필 이미지를 변경할 수 있으면 좋겠습니다."
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: ✅ 주요 작업 목록 (To-Do)
+      description: 이 기능을 구현하기 위해 필요한 작업들을 최대한 상세하게 작성해주세요. (완료 시 체크)
+      placeholder: |
+        - [ ] 프로필 이미지 업로드 API 설계 및 구현
+        - [ ] 프로필 페이지에 이미지 업로드 UI 추가
+        - [ ] 이미지 저장 로직 구현 (예: S3 연동)
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: considerations
+    attributes:
+      label: 🤔 고려 사항 (선택)
+      description: 기술적인 어려움, 다른 기능과의 연관성, 참고 자료 등 개발 시 고려해야 할 사항을 적어주세요.
+      placeholder: |
+        - 이미지 최적화 방안 고려
+        - 관련 API 문서 링크: [링크]
+    validations:
+      required: false
+  - type: input
+    id: due-date
+    attributes:
+      label: 📅 목표 완료일 (선택)
+      description: 개인적인 목표 완료일을 설정합니다.
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: false
+</file>
+
+<file path=".github/ISSUE_TEMPLATE/refactor-template.yml">
+name: 🛠️ 일반 작업 (Task / Chore / Refactor / Docs)
+description: 코드 리팩토링, 문서 작업, 설정 변경 등 일반적인 작업을 기록합니다.
+title: "[타입]: [작업 내용 요약]"
+labels: task
+assignees: []
+
+body:
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: 🏷️ 작업 유형
+      description: |
+        작업의 성격을 선택해주세요. (title에도 반영해주세요)
+        - refactor: 코드 리팩토링
+        - docs: 문서 작업
+        - chore: 빌드/설정 유지보수
+        - style: 코드 스타일 정리
+        - test: 테스트 코드 작성/수정
+      options:
+        - refactor
+        - docs
+        - chore
+        - style
+        - test
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 작업 설명
+      description: 어떤 작업을 왜 하는지 설명해주세요.
+      placeholder: "예: UserController 로직 가독성 향상을 위한 리팩토링"
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: ✅ 세부 작업 목록 (To-Do)
+      description: 이 작업을 완료하기 위해 필요한 세부 단계들을 작성해주세요.
+      placeholder: |
+        - [ ] 중복 코드 제거
+        - [ ] 메서드 분리
+        - [ ] README 파일 업데이트
+        - [ ] ...
+    validations:
+      required: false
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: ✨ 기대 효과 / 완료 기준
+      description: 이 작업이 완료되었을 때 기대되는 결과나 완료 기준을 설명해주세요.
+      placeholder: "예: 코드 복잡도 감소, 문서 최신화 완료"
+    validations:
+      required: false
+</file>
+
+<file path=".github/PULL_REQUEST_TEMPLATE.md">
+## 📌 관련 이슈
+
+- closed: #issueNum
+
+## ✨ PR 작업 내용
+
+- 기능에서 어떤 부분이 구현되었는지 설명해주세요.
+<!-- 수정/추가한 내용을 적어주세요. -->
+
+## 이미지 첨부
+
+<img src="파일 주소" width="50%" height="50%">
+<br/>
+
+## 다음 할 일
+
+- 다음으로 할 일을 작성해 주세요.
+</file>
+
+<file path="chat_service/.gitattributes">
+/gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+</file>
+
+<file path="chat_service/.gitignore">
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+</file>
+
+<file path="chat_service/gradle/wrapper/gradle-wrapper.properties">
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+networkTimeout=10000
+validateDistributionUrl=true
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+</file>
+
+<file path="chat_service/gradlew">
+#!/bin/sh
+
+#
+# Copyright © 2015-2021 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+# Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exit
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+CLASSPATH="\\\"\\\""
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    if ! command -v java >/dev/null 2>&1
+    then
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
+#     and any embedded shellness will be escaped.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+</file>
+
+<file path="chat_service/gradlew.bat">
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME% 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+</file>
+
+<file path="chat_service/settings.gradle">
+rootProject.name = 'chat_service'
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/ChatServiceApplication.java">
+package com.synapse.chat_service;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ChatServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ChatServiceApplication.class, args);
+	}
+
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/config/JpaConfig.java">
+package com.synapse.chat_service.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@Configuration
+@EnableJpaAuditing
+public class JpaConfig {
+    
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/controller/MessageController.java">
+package com.synapse.chat_service.controller;
+
+import com.synapse.chat_service.dto.request.MessageRequest;
+import com.synapse.chat_service.dto.response.MessageResponse;
+import com.synapse.chat_service.service.MessageService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/v1/messages")
+@RequiredArgsConstructor
+public class MessageController {
+    
+    private final MessageService messageService;
+    
+    @PostMapping
+    public ResponseEntity<MessageResponse.Detail> createMessage(
+        @Valid @RequestBody MessageRequest.Create request
+    ) {
+        MessageResponse.Detail response = messageService.createMessage(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+    
+    @GetMapping("/{messageId}")
+    public ResponseEntity<MessageResponse.Detail> getMessage(
+        @PathVariable Long messageId
+    ) {
+        MessageResponse.Detail response = messageService.getMessage(messageId);
+        return ResponseEntity.ok(response);
+    }
+    
+    @DeleteMapping("/{messageId}")
+    public ResponseEntity<Void> deleteMessage(@PathVariable Long messageId) {
+        messageService.deleteMessage(messageId);
+        return ResponseEntity.noContent().build();
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/common/BaseTimeEntity.java">
+package com.synapse.chat_service.domain.common;
+
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+
+@Getter
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseTimeEntity {
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime updatedDate;
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/entity/enums/SubscriptionType.java">
+package com.synapse.chat_service.domain.entity.enums;
+
+public enum SubscriptionType {
+    FREE,
+    PRO
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/repository/ChatUsageRepository.java">
+package com.synapse.chat_service.domain.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.synapse.chat_service.domain.entity.ChatUsage;
+
+@Repository
+public interface ChatUsageRepository extends JpaRepository<ChatUsage, Long> {
+    
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/dto/request/MessageRequest.java">
+package com.synapse.chat_service.dto.request;
+
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class MessageRequest {
+    
+    public record Create(
+        @NotNull(message = "사용자 ID는 필수입니다.")
+        Long userId,
+        
+        @NotNull(message = "발신자 타입은 필수입니다.")
+        SenderType senderType,
+        
+        @NotBlank(message = "메시지 내용은 필수입니다.")
+        String content
+    ) {}
+
+    public record Update(
+        @NotBlank(message = "메시지 내용은 필수입니다.")
+        String content
+    ) {}
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/dto/response/MessageResponse.java">
+package com.synapse.chat_service.dto.response;
+
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+public class MessageResponse {
+    
+    public record Simple(
+        Long id,
+        UUID conversationId,
+        SenderType senderType,
+        String content,
+        LocalDateTime createdDate
+    ) {
+        public static Simple from(Message message) {
+            return new Simple(
+                message.getId(),
+                message.getConversation().getId(),
+                message.getSenderType(),
+                message.getContent(),
+                message.getCreatedDate()
+            );
+        }
+    }
+    
+    public record Detail(
+        Long id,
+        UUID conversationId,
+        SenderType senderType,
+        String content,
+        LocalDateTime createdDate,
+        LocalDateTime updatedDate
+    ) {
+        public static Detail from(Message message) {
+            return new Detail(
+                message.getId(),
+                message.getConversation().getId(),
+                message.getSenderType(),
+                message.getContent(),
+                message.getCreatedDate(),
+                message.getUpdatedDate()
+            );
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/BadRequestException.java">
+package com.synapse.chat_service.exception.commonexception;
+
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+public class BadRequestException extends BusinessException {
+    
+    public BadRequestException(ExceptionType exceptionType) {
+        super(exceptionType);
+    }
+    
+    public BadRequestException(ExceptionType exceptionType, String customMessage) {
+        super(exceptionType, customMessage);
+    }
+    
+    public BadRequestException(ExceptionType exceptionType, Throwable cause) {
+        super(exceptionType, cause);
+    }
+    
+    public BadRequestException(ExceptionType exceptionType, String customMessage, Throwable cause) {
+        super(exceptionType, customMessage, cause);
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/BusinessException.java">
+package com.synapse.chat_service.exception.commonexception;
+
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+import lombok.Getter;
+
+@Getter
+public abstract class BusinessException extends RuntimeException {
+    
+    private final ExceptionType exceptionType;
+    
+    public BusinessException(ExceptionType exceptionType) {
+        super(exceptionType.getMessage());
+        this.exceptionType = exceptionType;
+    }
+    
+    public BusinessException(ExceptionType exceptionType, String customMessage) {
+        super(customMessage);
+        this.exceptionType = exceptionType;
+    }
+    
+    public BusinessException(ExceptionType exceptionType, Throwable cause) {
+        super(exceptionType.getMessage(), cause);
+        this.exceptionType = exceptionType;
+    }
+    
+    public BusinessException(ExceptionType exceptionType, String customMessage, Throwable cause) {
+        super(customMessage, cause);
+        this.exceptionType = exceptionType;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/NotFoundException.java">
+package com.synapse.chat_service.exception.commonexception;
+
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+public class NotFoundException extends BusinessException {
+    
+    public NotFoundException(ExceptionType exceptionType) {
+        super(exceptionType);
+    }
+    
+    public NotFoundException(ExceptionType exceptionType, String customMessage) {
+        super(exceptionType, customMessage);
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/commonexception/ValidException.java">
+package com.synapse.chat_service.exception.commonexception;
+
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+public class ValidException extends BusinessException {
+    public ValidException(ExceptionType exceptionType) {
+        super(exceptionType);
+    }
+    
+    public ValidException(ExceptionType exceptionType, String customMessage) {
+        super(exceptionType, customMessage);
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/domain/ExceptionType.java">
+package com.synapse.chat_service.exception.domain;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@Getter
+@RequiredArgsConstructor
+public enum ExceptionType {
+    
+    // 400 Bad Request
+    INVALID_INPUT_VALUE(HttpStatus.BAD_REQUEST, "E001", "잘못된 입력값입니다."),
+    MISSING_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "E002", "필수 요청 파라미터가 누락되었습니다."),
+    INVALID_TYPE_VALUE(HttpStatus.BAD_REQUEST, "E003", "잘못된 타입의 값입니다."),
+    
+    // 401 Unauthorized
+    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "E101", "인증이 필요합니다."),
+    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "E102", "유효하지 않은 토큰입니다."),
+    EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "E103", "만료된 토큰입니다."),
+    
+    // 403 Forbidden
+    ACCESS_DENIED(HttpStatus.FORBIDDEN, "E201", "접근이 거부되었습니다."),
+    INSUFFICIENT_PERMISSION(HttpStatus.FORBIDDEN, "E202", "권한이 부족합니다."),
+    
+    // 404 Not Found
+    CONVERSATION_NOT_FOUND(HttpStatus.NOT_FOUND, "E301", "대화를 찾을 수 없습니다."),
+    MESSAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "E302", "메시지를 찾을 수 없습니다."),
+    USER_NOT_FOUND(HttpStatus.NOT_FOUND, "E303", "사용자를 찾을 수 없습니다."),
+    RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "E304", "요청한 리소스를 찾을 수 없습니다."),
+    
+    // 409 Conflict
+    DUPLICATE_RESOURCE(HttpStatus.CONFLICT, "E401", "이미 존재하는 리소스입니다."),
+    DUPLICATE_USERNAME(HttpStatus.CONFLICT, "E402", "이미 사용 중인 사용자명입니다."),
+    DUPLICATE_EMAIL(HttpStatus.CONFLICT, "E403", "이미 사용 중인 이메일입니다."),
+    
+    // 422 Unprocessable Entity
+    BUSINESS_LOGIC_ERROR(HttpStatus.UNPROCESSABLE_ENTITY, "E501", "비즈니스 로직 오류가 발생했습니다."),
+    INVALID_STATE(HttpStatus.UNPROCESSABLE_ENTITY, "E502", "유효하지 않은 상태입니다."),
+    
+    // 429 Too Many Requests
+    TOO_MANY_REQUESTS(HttpStatus.TOO_MANY_REQUESTS, "E601", "요청이 너무 많습니다. 잠시 후 다시 시도해주세요."),
+    
+    // 500 Internal Server Error
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E901", "서버 내부 오류가 발생했습니다."),
+    DATABASE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E902", "데이터베이스 오류가 발생했습니다."),
+    EXTERNAL_SERVICE_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E903", "외부 서비스 연동 중 오류가 발생했습니다."),
+    REDIS_CONNECTION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E904", "Redis 연결 오류가 발생했습니다."),
+    REDIS_OPERATION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E905", "Redis 작업 중 오류가 발생했습니다."),
+    REDIS_TRANSACTION_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E906", "Redis 트랜잭션 처리 중 오류가 발생했습니다."),
+    
+    // 502 Bad Gateway
+    BAD_GATEWAY(HttpStatus.BAD_GATEWAY, "E951", "게이트웨이 오류가 발생했습니다."),
+    
+    // 503 Service Unavailable
+    SERVICE_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "E961", "서비스를 사용할 수 없습니다.");
+    
+    private final HttpStatus status;
+    private final String code;
+    private final String message;
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/dto/ExceptionResponse.java">
+package com.synapse.chat_service.exception.dto;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.synapse.chat_service.exception.commonexception.BusinessException;
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+import lombok.Builder;
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+
+@Getter
+@Builder
+public class ExceptionResponse {
+    
+    private final String code;
+    private final String message;
+    
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private final LocalDateTime timestamp;
+    
+    public static ExceptionResponse from(BusinessException exception) {
+        return ExceptionResponse.builder()
+                .code(exception.getExceptionType().getCode())
+                .message(exception.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+    
+    public static ExceptionResponse of(ExceptionType exceptionType) {
+        return ExceptionResponse.builder()
+                .code(exceptionType.getCode())
+                .message(exceptionType.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+    
+    public static ExceptionResponse of(ExceptionType exceptionType, String customMessage) {
+        return ExceptionResponse.builder()
+                .code(exceptionType.getCode())
+                .message(customMessage)
+                .timestamp(LocalDateTime.now())
+                .build();
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/exception/service/GlobalExceptionHandler.java">
+package com.synapse.chat_service.exception.service;
+
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
+
+import com.synapse.chat_service.exception.commonexception.BadRequestException;
+import com.synapse.chat_service.exception.commonexception.BusinessException;
+import com.synapse.chat_service.exception.domain.ExceptionType;
+import com.synapse.chat_service.exception.dto.ExceptionResponse;
+
+import java.util.stream.Collectors;
+
+@Slf4j
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    // 로그 포맷 상수
+    private static final String INFO_LOG_FORMAT = "INFO - {} {} - Status: {} - Exception: {} - Message: {}";
+    private static final String WARN_LOG_FORMAT = "WARN - {} {} - Status: {} - Exception: {} - Message: {}";
+    private static final String ERROR_LOG_FORMAT = "ERROR - {} {} - Status: {} - Exception: {} - Message: {}";
+    
+    /**
+     * 비즈니스 예외 처리
+     */
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ExceptionResponse> handleBusinessException(BusinessException e, HttpServletRequest request) {
+        logWarn(request, e, e.getExceptionType().getStatus());
+        return ResponseEntity.status(e.getExceptionType().getStatus()).body(ExceptionResponse.from(e));
+    }
+    
+    /**
+     * BadRequest 예외 처리
+     */
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ExceptionResponse> handleBadRequestException(BadRequestException e, HttpServletRequest request) {
+        logWarn(request, e, e.getExceptionType().getStatus());
+        return ResponseEntity.status(e.getExceptionType().getStatus()).body(ExceptionResponse.from(e));
+    }
+    
+    /**
+     * Validation 예외 처리
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ExceptionResponse> handleValidationException(MethodArgumentNotValidException e, HttpServletRequest request) {
+        String errorMessage = e.getBindingResult().getFieldErrors().stream()
+                .map(FieldError::getDefaultMessage)
+                .collect(Collectors.joining(", "));
+        
+        logInfo(request, e, HttpStatus.BAD_REQUEST);
+        
+        ExceptionResponse response = ExceptionResponse.of(ExceptionType.INVALID_INPUT_VALUE, errorMessage);
+        return ResponseEntity.badRequest().body(response);
+    }
+    
+    /**
+     * 필수 파라미터 누락 예외 처리
+     */
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<ExceptionResponse> handleMissingParameterException(MissingServletRequestParameterException e, HttpServletRequest request) {
+        // ExceptionType에 정의된 기본 메시지에 구체적인 파라미터 정보 추가
+        String detailedMessage = String.format("%s (파라미터: %s)", 
+                ExceptionType.MISSING_REQUEST_PARAMETER.getMessage(), 
+                e.getParameterName());
+        
+        logInfo(request, e, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest()
+                .body(ExceptionResponse.of(ExceptionType.MISSING_REQUEST_PARAMETER, detailedMessage));
+    }
+    
+    /**
+     * 타입 불일치 예외 처리
+     */
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ExceptionResponse> handleTypeMismatchException(MethodArgumentTypeMismatchException e, HttpServletRequest request) {
+        // ExceptionType에 정의된 기본 메시지에 구체적인 파라미터 정보 추가
+        String detailedMessage = String.format("%s (파라미터: %s)", 
+                ExceptionType.INVALID_TYPE_VALUE.getMessage(), 
+                e.getName());
+        
+        logInfo(request, e, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest()
+                .body(ExceptionResponse.of(ExceptionType.INVALID_TYPE_VALUE, detailedMessage));
+    }
+    
+    /**
+     * IllegalArgumentException 처리
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ExceptionResponse> handleIllegalArgumentException(IllegalArgumentException e, HttpServletRequest request) {
+        logWarn(request, e, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest()
+                .body(ExceptionResponse.of(ExceptionType.INVALID_INPUT_VALUE, e.getMessage()));
+    }
+    
+    /**
+     * 정적 리소스 없음 예외 처리 (INFO 레벨로 처리)
+     */
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleNoResourceFoundException(NoResourceFoundException e, HttpServletRequest request) {
+        logInfo(request, e, HttpStatus.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ExceptionResponse.of(ExceptionType.RESOURCE_NOT_FOUND));
+    }
+    
+    /**
+     * 일반적인 예외 처리
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponse> handleGeneralException(Exception e, HttpServletRequest request) {
+        logError(request, e, HttpStatus.INTERNAL_SERVER_ERROR);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ExceptionResponse.of(ExceptionType.INTERNAL_SERVER_ERROR));
+    }
+    
+    // 로깅 메서드들
+    private void logInfo(HttpServletRequest request, Exception e, HttpStatus status) {
+        log.info(INFO_LOG_FORMAT, 
+                request.getMethod(), 
+                request.getRequestURI(), 
+                status.value(), 
+                e.getClass().getSimpleName(), 
+                e.getMessage());
+    }
+    
+
+    
+    private void logWarn(HttpServletRequest request, Exception e, HttpStatus status) {
+        log.warn(WARN_LOG_FORMAT, 
+                request.getMethod(), 
+                request.getRequestURI(), 
+                status.value(), 
+                e.getClass().getSimpleName(), 
+                e.getMessage());
+    }
+    
+    private void logError(HttpServletRequest request, Exception e, HttpStatus status) {
+        log.error(ERROR_LOG_FORMAT, 
+                request.getMethod(), 
+                request.getRequestURI(), 
+                status.value(), 
+                e.getClass().getSimpleName(), 
+                e.getMessage(), 
+                e);
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/service/MessageService.java">
+package com.synapse.chat_service.service;
+
+import com.synapse.chat_service.domain.entity.Conversation;
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.repository.ConversationRepository;
+import com.synapse.chat_service.domain.repository.MessageRepository;
+import com.synapse.chat_service.dto.request.MessageRequest;
+import com.synapse.chat_service.dto.response.MessageResponse;
+import com.synapse.chat_service.exception.commonexception.NotFoundException;
+import com.synapse.chat_service.exception.domain.ExceptionType;
+import com.synapse.chat_service.session.RedisAiChatManager;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class MessageService {
+    
+    private final MessageRepository messageRepository;
+    private final ConversationRepository conversationRepository;
+    private final RedisAiChatManager redisAiChatManager;
+    
+    @Transactional
+    public MessageResponse.Detail createMessage(MessageRequest.Create request) {
+        // 사용자의 대화가 존재하지 않으면 자동으로 생성
+        Conversation conversation = getOrCreateConversation(request.userId());
+        
+        Message message = Message.builder()
+                .conversation(conversation)
+                .senderType(request.senderType())
+                .content(request.content())
+                .build();
+        
+        Message savedMessage = messageRepository.save(message);
+        return MessageResponse.Detail.from(savedMessage);
+    }
+    
+    /**
+     * 사용자의 대화 조회 (공통 메소드)
+     * 모든 conversation 조회 로직을 통합하여 중복을 제거
+     */
+    private Optional<Conversation> findConversationByUserId(Long userId) {
+        return conversationRepository.findByUserId(userId);
+    }
+    
+    /**
+     * 사용자의 대화를 조회하거나 없으면 새로 생성
+     * Redis의 AiChatInfo와 DB의 Conversation 간 일관성을 보장
+     */
+    private Conversation getOrCreateConversation(Long userId) {
+        return findConversationByUserId(userId)
+                .map(conversation -> {
+                    // 기존 대화가 있으면 Redis 정보 동기화
+                    redisAiChatManager.syncConversationId(userId.toString(), conversation.getId());
+                    return conversation;
+                })
+                .orElseGet(() -> {
+                    // 새로운 대화 생성
+                    Conversation newConversation = Conversation.builder()
+                            .userId(userId)
+                            .build();
+                    Conversation savedConversation = conversationRepository.save(newConversation);
+                    
+                    // Redis에 새로운 대화 정보 저장
+                    redisAiChatManager.createOrUpdateAiChatWithConversation(
+                            userId.toString(), 
+                            savedConversation.getId()
+                    );
+                    
+                    return savedConversation;
+                });
+    }
+    
+    public MessageResponse.Detail getMessage(Long messageId) {
+        Message message = findMessageById(messageId);
+        return MessageResponse.Detail.from(message);
+    }
+    
+    public List<MessageResponse.Simple> getMessagesByUserId(Long userId) {
+        // 사용자의 대화 조회 (없으면 빈 리스트 반환)
+        return findConversationByUserId(userId)
+                .map(conversation -> {
+                    List<Message> messages = messageRepository.findByConversationIdOrderByCreatedDateAsc(conversation.getId());
+                    return messages.stream()
+                            .map(MessageResponse.Simple::from)
+                            .collect(Collectors.toList());
+                })
+                .orElse(List.of());
+    }
+    
+    public Page<MessageResponse.Simple> getMessagesByUserIdWithPaging(Long userId, Pageable pageable) {
+        // 사용자의 대화 조회 (없으면 빈 페이지 반환)
+        return findConversationByUserId(userId)
+                .map(conversation -> {
+                    Page<Message> messages = messageRepository.findByConversationIdOrderByCreatedDateAsc(conversation.getId(), pageable);
+                    return messages.map(MessageResponse.Simple::from);
+                })
+                .orElse(Page.empty(pageable));
+    }
+    
+    public Page<MessageResponse.Simple> getMessagesRecentFirst(Long userId, Pageable pageable) {
+        // 사용자의 대화 조회 (없으면 빈 페이지 반환)
+        return findConversationByUserId(userId)
+                .map(conversation -> {
+                    Page<Message> messages = messageRepository.findByConversationIdOrderByCreatedDateDesc(conversation.getId(), pageable);
+                    return messages.map(MessageResponse.Simple::from);
+                })
+                .orElse(Page.empty(pageable));
+    }
+    
+    public List<MessageResponse.Simple> searchMessages(Long userId, String keyword) {
+        // 사용자의 대화 조회 (없으면 빈 리스트 반환)
+        return findConversationByUserId(userId)
+                .map(conversation -> {
+                    List<Message> messages = messageRepository.findByConversationIdAndContentContaining(conversation.getId(), keyword);
+                    return messages.stream()
+                            .map(MessageResponse.Simple::from)
+                            .collect(Collectors.toList());
+                })
+                .orElse(List.of());
+    }
+    
+    @Transactional
+    public void deleteMessage(Long messageId) {
+        Message message = findMessageById(messageId);
+        messageRepository.delete(message);
+    }
+    
+    public long getMessageCount(Long userId) {
+        // 사용자의 대화 조회 (없으면 0 반환)
+        return findConversationByUserId(userId)
+                .map(conversation -> messageRepository.countByConversationId(conversation.getId()))
+                .orElse(0L);
+    }
+    
+    public long getMessageCountByUserId(Long userId) {
+        return getMessageCount(userId);
+    }
+    
+    /**
+     * 사용자의 대화 ID 조회 (없으면 null 반환)
+     */
+    public UUID getConversationId(Long userId) {
+        return findConversationByUserId(userId)
+                .map(Conversation::getId)
+                .orElse(null);
+    }
+    
+    private Message findMessageById(Long messageId) {
+        return messageRepository.findById(messageId)
+                .orElseThrow(() -> new NotFoundException(ExceptionType.MESSAGE_NOT_FOUND, "ID: " + messageId));
+    }
+}
+</file>
+
+<file path="chat_service/src/main/resources/application-local.yml">
+spring:
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://${local-db.postgres.host}:${local-db.postgres.port}/${local-db.postgres.name}
+      username: ${local-db.postgres.username}
+      password: ${local-db.postgres.password}
+
+  jpa:
+    properties:
+      hibernate:
+        format:
+            sql: true
+        highlight:
+            sql: true
+        hbm2ddl:
+            auto: create
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    show-sql: true
+  
+  data:
+    redis:
+      host: ${local-db.redis.host}
+      port: ${local-db.redis.port}
+      timeout: ${local-db.redis.timeout}
+      lettuce:
+        pool:
+          max-active: ${local-db.redis.max-active}
+          max-idle: ${local-db.redis.max-idle}
+          min-idle: ${local-db.redis.min-idle}
+  
+  session:
+    store-type: redis
+    redis:
+        namespace: spring:session
+
+session:
+  expiration-hours: 24
+  max-sessions-per-user: 5
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: info
+        level: info
+</file>
+
+<file path="chat_service/src/main/resources/application.yml">
+server:
+    port: 1003
+
+spring:
+    main:
+        web-application-type: servlet
+    
+    profiles:
+        default: local
+    
+    application:
+        name: chat_service
+
+    config:
+        import:
+            - security/application-db.yml
+</file>
+
+<file path="chat_service/src/main/resources/security/application-db.yml">
+local-db:
+    postgres:
+        host: localhost
+        port: 5436
+        name: chat-service
+        username: donghyeon
+        password: adzc1973
+
+    redis:
+        host: localhost
+        port: 6379
+        password: 1234
+        timeout: 10000
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/ChatServiceApplicationTests.java">
+package com.synapse.chat_service;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ChatServiceApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/controller/MessageControllerTest.java">
+package com.synapse.chat_service.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.synapse.chat_service.domain.entity.Conversation;
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.domain.repository.ConversationRepository;
+import com.synapse.chat_service.domain.repository.MessageRepository;
+import com.synapse.chat_service.dto.request.MessageRequest;
+import com.synapse.chat_service.testutil.TestObjectFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@Transactional
+@DisplayName("MessageController 통합 테스트")
+class MessageControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
+    private ConversationRepository conversationRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    private Conversation testConversation;
+    private Message testMessage;
+
+    @BeforeEach
+    void setUp() {
+        // 테스트용 대화 생성
+        testConversation = TestObjectFactory.createConversation(1L);
+        testConversation = conversationRepository.save(testConversation);
+
+        // 테스트용 메시지 생성
+        testMessage = TestObjectFactory.createUserMessage(testConversation, "테스트 메시지");
+        testMessage = messageRepository.save(testMessage);
+    }
+
+    @Nested
+    @DisplayName("POST /api/v1/messages - 메시지 생성")
+    class CreateMessage {
+
+        @Test
+        @DisplayName("성공: 유효한 메시지 생성 요청")
+        void createMessage_Success() throws Exception {
+            // given
+            MessageRequest.Create request = new MessageRequest.Create(
+                    testConversation.getUserId(),
+                    SenderType.USER,
+                    "새로운 메시지"
+            );
+
+            // when & then
+            mockMvc.perform(post("/api/v1/messages")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.id").exists())
+                    .andExpect(jsonPath("$.conversationId").value(testConversation.getId().toString()))
+                    .andExpect(jsonPath("$.senderType").value("USER"))
+                    .andExpect(jsonPath("$.content").value("새로운 메시지"))
+                    .andExpect(jsonPath("$.createdDate").exists())
+                    .andExpect(jsonPath("$.updatedDate").exists());
+        }
+
+        @Test
+        @DisplayName("실패: 사용자 ID가 null인 경우")
+        void createMessage_Fail_NullUserId() throws Exception {
+            // given
+            MessageRequest.Create request = new MessageRequest.Create(
+                    null,
+                    SenderType.USER,
+                    "메시지 내용"
+            );
+
+            // when & then
+            mockMvc.perform(post("/api/v1/messages")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isBadRequest());
+        }
+
+        @Test
+        @DisplayName("실패: 발신자 타입이 null인 경우")
+        void createMessage_Fail_NullSenderType() throws Exception {
+            // given
+            MessageRequest.Create request = new MessageRequest.Create(
+                    testConversation.getUserId(),
+                    null,
+                    "메시지 내용"
+            );
+
+            // when & then
+            mockMvc.perform(post("/api/v1/messages")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isBadRequest());
+        }
+
+        @Test
+        @DisplayName("실패: 메시지 내용이 비어있는 경우")
+        void createMessage_Fail_BlankContent() throws Exception {
+            // given
+            MessageRequest.Create request = new MessageRequest.Create(
+                    testConversation.getUserId(),
+                    SenderType.USER,
+                    ""
+            );
+
+            // when & then
+            mockMvc.perform(post("/api/v1/messages")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isBadRequest());
+        }
+
+        @Test
+        @DisplayName("성공: 새로운 사용자 ID로 대화 생성")
+        void createMessage_Success_NewUser() throws Exception {
+            // given
+            Long newUserId = 999L;
+            MessageRequest.Create request = new MessageRequest.Create(
+                    newUserId,
+                    SenderType.USER,
+                    "새 사용자의 첫 메시지"
+            );
+
+            // when & then
+            mockMvc.perform(post("/api/v1/messages")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(request)))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.content").value("새 사용자의 첫 메시지"));
+        }
+    }
+
+    @Nested
+    @DisplayName("GET /api/v1/messages/{messageId} - 메시지 단건 조회")
+    class GetMessage {
+
+        @Test
+        @DisplayName("성공: 존재하는 메시지 조회")
+        void getMessage_Success() throws Exception {
+            // when & then
+            mockMvc.perform(get("/api/v1/messages/{messageId}", testMessage.getId()))
+                    .andExpect(status().isOk())
+                    .andExpect(jsonPath("$.id").value(testMessage.getId()))
+                    .andExpect(jsonPath("$.conversationId").value(testConversation.getId().toString()))
+                    .andExpect(jsonPath("$.senderType").value("USER"))
+                    .andExpect(jsonPath("$.content").value("테스트 메시지"))
+                    .andExpect(jsonPath("$.createdDate").exists())
+                    .andExpect(jsonPath("$.updatedDate").exists());
+        }
+
+        @Test
+        @DisplayName("실패: 존재하지 않는 메시지 ID")
+        void getMessage_Fail_NotFound() throws Exception {
+            // given
+            Long nonExistentMessageId = 99999L;
+
+            // when & then
+            mockMvc.perform(get("/api/v1/messages/{messageId}", nonExistentMessageId))
+                    .andExpect(status().isNotFound());
+        }
+    }
+
+
+
+    @Nested
+    @DisplayName("DELETE /api/v1/messages/{messageId} - 메시지 삭제")
+    class DeleteMessage {
+
+        @Test
+        @DisplayName("성공: 존재하는 메시지 삭제")
+        void deleteMessage_Success() throws Exception {
+            // when & then
+            mockMvc.perform(delete("/api/v1/messages/{messageId}", testMessage.getId()))
+                    .andExpect(status().isNoContent());
+        }
+
+        @Test
+        @DisplayName("실패: 존재하지 않는 메시지 ID")
+        void deleteMessage_Fail_NotFound() throws Exception {
+            // given
+            Long nonExistentMessageId = 99999L;
+
+            // when & then
+            mockMvc.perform(delete("/api/v1/messages/{messageId}", nonExistentMessageId))
+                    .andExpect(status().isNotFound());
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/domain/entity/MessageTest.java">
+package com.synapse.chat_service.domain.entity;
+
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.exception.commonexception.ValidException;
+import com.synapse.chat_service.testutil.TestObjectFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@DisplayName("Message 도메인 엔티티 테스트")
+class MessageTest {
+
+    private Conversation conversation;
+    private Message message;
+    private final String initialContent = "초기 메시지 내용";
+
+    @BeforeEach
+    void setUp() {
+        conversation = TestObjectFactory.createConversation(1L);
+
+        message = TestObjectFactory.createUserMessage(conversation, initialContent);
+    }
+
+    @Nested
+    @DisplayName("updateContent 메소드 테스트")
+    class UpdateContentTest {
+
+        @Test
+        @DisplayName("성공: 유효한 새 내용으로 업데이트")
+        void updateContent_Success() {
+            // given
+            String newContent = "새로운 메시지 내용입니다.";
+
+            // when
+            message.updateContent(newContent);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(newContent);
+        }
+
+        @Test
+        @DisplayName("성공: 최대 길이(1000자) 내용으로 업데이트")
+        void updateContent_Success_MaxLength() {
+            // given
+            String maxLengthContent = "a".repeat(1000);
+
+            // when
+            message.updateContent(maxLengthContent);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(maxLengthContent);
+            assertThat(message.getContent().length()).isEqualTo(1000);
+        }
+
+        @Test
+        @DisplayName("성공: 한글 내용으로 업데이트")
+        void updateContent_Success_Korean() {
+            // given
+            String koreanContent = "안녕하세요! 한글 메시지 내용입니다.";
+
+            // when
+            message.updateContent(koreanContent);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(koreanContent);
+        }
+
+        @Test
+        @DisplayName("성공: 특수문자가 포함된 내용으로 업데이트")
+        void updateContent_Success_SpecialCharacters() {
+            // given
+            String contentWithSpecialChars = "메시지 내용! @#$%^&*()_+-=[]{}|;':\",./<>?";
+
+            // when
+            message.updateContent(contentWithSpecialChars);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(contentWithSpecialChars);
+        }
+
+        @Test
+        @DisplayName("성공: 줄바꿈이 포함된 내용으로 업데이트")
+        void updateContent_Success_WithNewlines() {
+            // given
+            String contentWithNewlines = "첫 번째 줄\n두 번째 줄\n세 번째 줄";
+
+            // when
+            message.updateContent(contentWithNewlines);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(contentWithNewlines);
+        }
+
+        @Test
+        @DisplayName("실패: null 내용으로 업데이트 시 ValidException 발생")
+        void updateContent_Fail_NullContent() {
+            // given
+            String nullContent = null;
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                message.updateContent(nullContent);
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+            assertThat(message.getContent()).isEqualTo(initialContent); // 기존 내용 유지
+        }
+
+        @Test
+        @DisplayName("실패: 빈 문자열 내용으로 업데이트 시 ValidException 발생")
+        void updateContent_Fail_EmptyContent() {
+            // given
+            String emptyContent = "";
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                message.updateContent(emptyContent);
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+            assertThat(message.getContent()).isEqualTo(initialContent); // 기존 내용 유지
+        }
+
+        @Test
+        @DisplayName("실패: 공백만 있는 내용으로 업데이트 시 ValidException 발생")
+        void updateContent_Fail_WhitespaceOnlyContent() {
+            // given
+            String whitespaceOnlyContent = "   ";
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                message.updateContent(whitespaceOnlyContent);
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+            assertThat(message.getContent()).isEqualTo(initialContent); // 기존 내용 유지
+        }
+
+        @Test
+        @DisplayName("실패: 1000자를 초과하는 내용으로 업데이트 시 ValidException 발생")
+        void updateContent_Fail_ExceedsMaxLength() {
+            // given
+            String tooLongContent = "a".repeat(1001); // 1001자
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                message.updateContent(tooLongContent);
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 1000자를 초과할 수 없습니다");
+            assertThat(message.getContent()).isEqualTo(initialContent); // 기존 내용 유지
+        }
+
+        @Test
+        @DisplayName("경계값 테스트: 정확히 1000자인 내용으로 업데이트")
+        void updateContent_BoundaryTest_ExactlyMaxLength() {
+            // given
+            String exactMaxLengthContent = "a".repeat(1000);
+
+            // when
+            message.updateContent(exactMaxLengthContent);
+
+            // then
+            assertThat(message.getContent()).isEqualTo(exactMaxLengthContent);
+            assertThat(message.getContent().length()).isEqualTo(1000);
+        }
+    }
+
+    @Nested
+    @DisplayName("Message 생성자(Builder) 테스트")
+    class ConstructorTest {
+
+        @Test
+        @DisplayName("성공: 유효한 파라미터로 Message 생성")
+        void constructor_Success() {
+            // given
+            String testContent = "테스트 메시지 내용";
+
+            // when
+            Message newMessage = TestObjectFactory.createAssistantMessage(conversation, testContent);
+
+            // then
+            assertThat(newMessage.getConversation()).isEqualTo(conversation);
+            assertThat(newMessage.getSenderType()).isEqualTo(SenderType.ASSISTANT);
+            assertThat(newMessage.getContent()).isEqualTo(testContent);
+        }
+
+        @Test
+        @DisplayName("성공: USER 타입으로 Message 생성")
+        void constructor_Success_UserType() {
+            // given
+            String testContent = "사용자 메시지";
+
+            // when
+            Message userMessage = TestObjectFactory.createUserMessage(conversation, testContent);
+
+            // then
+            assertThat(userMessage.getSenderType()).isEqualTo(SenderType.USER);
+            assertThat(userMessage.getContent()).isEqualTo(testContent);
+        }
+
+        @Test
+        @DisplayName("성공: AI 타입으로 Message 생성")
+        void constructor_Success_AIType() {
+            // given
+            String testContent = "AI 응답 메시지";
+
+            // when
+            Message aiMessage = TestObjectFactory.createAssistantMessage(conversation, testContent);
+
+            // then
+            assertThat(aiMessage.getSenderType()).isEqualTo(SenderType.ASSISTANT);
+            assertThat(aiMessage.getContent()).isEqualTo(testContent);
+        }
+
+        @Test
+        @DisplayName("실패: null 내용으로 Message 생성 시 ValidException 발생")
+        void constructor_Fail_NullContent() {
+            // given
+            String nullContent = null;
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                Message.builder()
+                        .conversation(conversation)
+                        .senderType(SenderType.USER)
+                        .content(nullContent)
+                        .build();
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+        }
+
+        @Test
+        @DisplayName("실패: 빈 문자열 내용으로 Message 생성 시 ValidException 발생")
+        void constructor_Fail_EmptyContent() {
+            // given
+            String emptyContent = "";
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                Message.builder()
+                        .conversation(conversation)
+                        .senderType(SenderType.USER)
+                        .content(emptyContent)
+                        .build();
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+        }
+
+        @Test
+        @DisplayName("실패: 공백만 있는 내용으로 Message 생성 시 ValidException 발생")
+        void constructor_Fail_WhitespaceOnlyContent() {
+            // given
+            String whitespaceOnlyContent = "   ";
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                Message.builder()
+                        .conversation(conversation)
+                        .senderType(SenderType.USER)
+                        .content(whitespaceOnlyContent)
+                        .build();
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 비어있을 수 없습니다");
+        }
+
+        @Test
+        @DisplayName("실패: 1000자를 초과하는 내용으로 Message 생성 시 ValidException 발생")
+        void constructor_Fail_ExceedsMaxLength() {
+            // given
+            String tooLongContent = "a".repeat(1001); // 1001자
+
+            // when & then
+            ValidException exception = assertThrows(ValidException.class, () -> {
+                Message.builder()
+                        .conversation(conversation)
+                        .senderType(SenderType.USER)
+                        .content(tooLongContent)
+                        .build();
+            });
+
+            assertThat(exception.getMessage()).contains("메시지 내용은 1000자를 초과할 수 없습니다");
+        }
+
+        @Test
+        @DisplayName("성공: 최대 길이(1000자) 내용으로 Message 생성")
+        void constructor_Success_MaxLength() {
+            // given
+            String maxLengthContent = "a".repeat(1000);
+
+            // when
+            Message newMessage = TestObjectFactory.createUserMessage(conversation, maxLengthContent);
+
+            // then
+            assertThat(newMessage.getContent()).isEqualTo(maxLengthContent);
+            assertThat(newMessage.getContent().length()).isEqualTo(1000);
+        }
+
+        @Test
+        @DisplayName("경계값 테스트: 정확히 1000자인 내용으로 Message 생성")
+        void constructor_BoundaryTest_ExactlyMaxLength() {
+            // given
+            String exactMaxLengthContent = "b".repeat(1000);
+
+            // when
+            Message newMessage = TestObjectFactory.createAssistantMessage(conversation, exactMaxLengthContent);
+
+            // then
+            assertThat(newMessage.getContent()).isEqualTo(exactMaxLengthContent);
+            assertThat(newMessage.getContent().length()).isEqualTo(1000);
+            assertThat(newMessage.getSenderType()).isEqualTo(SenderType.ASSISTANT);
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/repository/ChatUsageRepositoryTest.java">
+package com.synapse.chat_service.repository;
+
+import com.synapse.chat_service.domain.entity.ChatUsage;
+import com.synapse.chat_service.domain.entity.enums.SubscriptionType;
+import com.synapse.chat_service.domain.repository.ChatUsageRepository;
+import com.synapse.chat_service.testutil.TestObjectFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
+
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DataJpaTest
+@ActiveProfiles("test")
+@DisplayName("ChatUsageRepository 단위 테스트")
+class ChatUsageRepositoryTest {
+
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @Autowired
+    private ChatUsageRepository chatUsageRepository;
+
+    private ChatUsage chatUsage1;
+    private ChatUsage chatUsage2;
+
+    @BeforeEach
+    void setUp() {
+        // 테스트용 ChatUsage 데이터 생성
+        chatUsage1 = TestObjectFactory.createChatUsage(1L, SubscriptionType.FREE, 100);
+        chatUsage2 = TestObjectFactory.createChatUsage(2L, SubscriptionType.PRO, 1000);
+    }
+
+    @Nested
+    @DisplayName("save 테스트")
+    class SaveTest {
+
+        @Test
+        @DisplayName("성공: ChatUsage 저장")
+        void save_Success() {
+            // when
+            ChatUsage savedChatUsage = chatUsageRepository.save(chatUsage1);
+
+            // then
+            assertThat(savedChatUsage).isNotNull();
+            assertThat(savedChatUsage.getId()).isNotNull();
+            assertThat(savedChatUsage.getUserId()).isEqualTo(1L);
+            assertThat(savedChatUsage.getSubscriptionType()).isEqualTo(SubscriptionType.FREE);
+            assertThat(savedChatUsage.getMessageLimit()).isEqualTo(100);
+            assertThat(savedChatUsage.getMessageCount()).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("성공: PRO 구독 타입으로 ChatUsage 저장")
+        void save_Success_ProSubscription() {
+            // when
+            ChatUsage savedChatUsage = chatUsageRepository.save(chatUsage2);
+
+            // then
+            assertThat(savedChatUsage).isNotNull();
+            assertThat(savedChatUsage.getId()).isNotNull();
+            assertThat(savedChatUsage.getUserId()).isEqualTo(2L);
+            assertThat(savedChatUsage.getSubscriptionType()).isEqualTo(SubscriptionType.PRO);
+            assertThat(savedChatUsage.getMessageLimit()).isEqualTo(1000);
+            assertThat(savedChatUsage.getMessageCount()).isEqualTo(0);
+        }
+    }
+
+    @Nested
+    @DisplayName("findById 테스트")
+    class FindByIdTest {
+
+        @Test
+        @DisplayName("성공: ID로 ChatUsage 조회")
+        void findById_Success() {
+            // given
+            ChatUsage savedChatUsage = entityManager.persistAndFlush(chatUsage1);
+
+            // when
+            Optional<ChatUsage> foundChatUsage = chatUsageRepository.findById(savedChatUsage.getId());
+
+            // then
+            assertThat(foundChatUsage).isPresent();
+            assertThat(foundChatUsage.get().getUserId()).isEqualTo(1L);
+            assertThat(foundChatUsage.get().getSubscriptionType()).isEqualTo(SubscriptionType.FREE);
+            assertThat(foundChatUsage.get().getMessageLimit()).isEqualTo(100);
+        }
+
+        @Test
+        @DisplayName("실패: 존재하지 않는 ID로 조회")
+        void findById_NotFound() {
+            // when
+            Optional<ChatUsage> foundChatUsage = chatUsageRepository.findById(999L);
+
+            // then
+            assertThat(foundChatUsage).isEmpty();
+        }
+    }
+
+    @Nested
+    @DisplayName("findAll 테스트")
+    class FindAllTest {
+
+        @Test
+        @DisplayName("성공: 모든 ChatUsage 조회")
+        void findAll_Success() {
+            // given
+            entityManager.persistAndFlush(chatUsage1);
+            entityManager.persistAndFlush(chatUsage2);
+
+            // when
+            var allChatUsages = chatUsageRepository.findAll();
+
+            // then
+            assertThat(allChatUsages).hasSize(2);
+            assertThat(allChatUsages)
+                    .extracting(ChatUsage::getUserId)
+                    .containsExactlyInAnyOrder(1L, 2L);
+        }
+
+        @Test
+        @DisplayName("성공: 빈 결과 반환")
+        void findAll_EmptyResult() {
+            // when
+            var allChatUsages = chatUsageRepository.findAll();
+
+            // then
+            assertThat(allChatUsages).isEmpty();
+        }
+    }
+
+    @Nested
+    @DisplayName("delete 테스트")
+    class DeleteTest {
+
+        @Test
+        @DisplayName("성공: ChatUsage 삭제")
+        void delete_Success() {
+            // given
+            ChatUsage savedChatUsage = entityManager.persistAndFlush(chatUsage1);
+            Long chatUsageId = savedChatUsage.getId();
+
+            // when
+            chatUsageRepository.delete(savedChatUsage);
+            entityManager.flush();
+
+            // then
+            Optional<ChatUsage> deletedChatUsage = chatUsageRepository.findById(chatUsageId);
+            assertThat(deletedChatUsage).isEmpty();
+        }
+
+        @Test
+        @DisplayName("성공: deleteById로 ChatUsage 삭제")
+        void deleteById_Success() {
+            // given
+            ChatUsage savedChatUsage = entityManager.persistAndFlush(chatUsage1);
+            Long chatUsageId = savedChatUsage.getId();
+
+            // when
+            chatUsageRepository.deleteById(chatUsageId);
+            entityManager.flush();
+
+            // then
+            Optional<ChatUsage> deletedChatUsage = chatUsageRepository.findById(chatUsageId);
+            assertThat(deletedChatUsage).isEmpty();
+        }
+    }
+
+    @Nested
+    @DisplayName("existsById 테스트")
+    class ExistsByIdTest {
+
+        @Test
+        @DisplayName("성공: 존재하는 ChatUsage 확인")
+        void existsById_Success() {
+            // given
+            ChatUsage savedChatUsage = entityManager.persistAndFlush(chatUsage1);
+
+            // when
+            boolean exists = chatUsageRepository.existsById(savedChatUsage.getId());
+
+            // then
+            assertThat(exists).isTrue();
+        }
+
+        @Test
+        @DisplayName("실패: 존재하지 않는 ChatUsage 확인")
+        void existsById_NotFound() {
+            // when
+            boolean exists = chatUsageRepository.existsById(999L);
+
+            // then
+            assertThat(exists).isFalse();
+        }
+    }
+
+    @Nested
+    @DisplayName("count 테스트")
+    class CountTest {
+
+        @Test
+        @DisplayName("성공: ChatUsage 개수 조회")
+        void count_Success() {
+            // given
+            entityManager.persistAndFlush(chatUsage1);
+            entityManager.persistAndFlush(chatUsage2);
+
+            // when
+            long count = chatUsageRepository.count();
+
+            // then
+            assertThat(count).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("성공: 빈 테이블의 개수 조회")
+        void count_EmptyTable() {
+            // when
+            long count = chatUsageRepository.count();
+
+            // then
+            assertThat(count).isEqualTo(0);
+        }
+    }
+
+    @Nested
+    @DisplayName("JPA 매핑 검증 테스트")
+    class JpaMappingTest {
+
+        @Test
+        @DisplayName("성공: userId unique 제약 조건 검증")
+        void uniqueUserId_Validation() {
+            // given
+            entityManager.persistAndFlush(chatUsage1);
+
+            ChatUsage duplicateUserIdChatUsage = TestObjectFactory.createChatUsage(1L, SubscriptionType.PRO, 500);
+
+            // when & then
+            try {
+                entityManager.persistAndFlush(duplicateUserIdChatUsage);
+                entityManager.flush();
+                // 예외가 발생하지 않으면 테스트 실패
+                assertThat(false).as("Unique constraint violation should occur").isTrue();
+            } catch (Exception e) {
+                // unique 제약 조건 위반으로 예외 발생 예상
+                assertThat(e).isNotNull();
+            }
+        }
+
+        @Test
+        @DisplayName("성공: 기본값 검증")
+        void defaultValues_Validation() {
+            // when
+            ChatUsage savedChatUsage = entityManager.persistAndFlush(chatUsage1);
+
+            // then
+            assertThat(savedChatUsage.getMessageCount()).isEqualTo(0);
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/repository/MessageRepositoryTest.java">
+package com.synapse.chat_service.repository;
+
+import com.synapse.chat_service.domain.entity.Conversation;
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.domain.repository.MessageRepository;
+import com.synapse.chat_service.testutil.TestObjectFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.ActiveProfiles;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DataJpaTest
+@ActiveProfiles("test")
+@DisplayName("MessageRepository 단위 테스트")
+class MessageRepositoryTest {
+
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    private Conversation conversation1;
+    private Conversation conversation2;
+    private Message message1;
+    private Message message2;
+    private Message message3;
+    private Message message4;
+    private Message message5;
+
+    @BeforeEach
+    void setUp() {
+        // 테스트용 Conversation 데이터 생성
+        conversation1 = TestObjectFactory.createConversation(1L);
+        conversation2 = TestObjectFactory.createConversation(2L);
+
+        entityManager.persistAndFlush(conversation1);
+        entityManager.persistAndFlush(conversation2);
+
+        // 테스트용 Message 데이터 생성
+        message1 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "안녕하세요! 자바 공부를 시작해봅시다.", LocalDateTime.now().minusHours(4));
+        message2 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.ASSISTANT, "자바의 기본 문법에 대해 알아보겠습니다.", LocalDateTime.now().minusHours(3));
+        message3 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "객체지향 프로그래밍의 핵심 개념을 설명해주세요.", LocalDateTime.now().minusHours(2));
+        message4 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.USER, "스프링 부트 프로젝트를 생성하는 방법을 알려주세요.", LocalDateTime.now().minusHours(1));
+        message5 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.ASSISTANT, "Spring Initializr를 사용하여 프로젝트를 생성할 수 있습니다.", LocalDateTime.now());
+
+        // 데이터베이스에 저장
+        entityManager.persistAndFlush(message1);
+        entityManager.persistAndFlush(message2);
+        entityManager.persistAndFlush(message3);
+        entityManager.persistAndFlush(message4);
+        entityManager.persistAndFlush(message5);
+    }
+
+    @Nested
+    @DisplayName("findByConversationIdAndContentContaining 테스트")
+    class FindByConversationIdAndContentContainingTest {
+
+        @Test
+        @DisplayName("성공: 특정 대화에서 키워드가 포함된 메시지 조회")
+        void findByConversationIdAndContentContaining_Success() {
+            // given
+            String keyword = "자바";
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+
+            // then
+            assertThat(result).hasSize(2);
+            assertThat(result).extracting(Message::getContent)
+                    .containsExactlyInAnyOrder(
+                            "안녕하세요! 자바 공부를 시작해봅시다.",
+                            "자바의 기본 문법에 대해 알아보겠습니다."
+                    );
+            assertThat(result).allMatch(message -> message.getConversation().getId().equals(conversation1.getId()));
+        }
+
+        @Test
+        @DisplayName("성공: 키워드가 정확히 일치하는 경우")
+        void findByConversationIdAndContentContaining_ExactMatch() {
+            // given
+            String keyword = "객체지향";
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+
+            // then
+            assertThat(result).hasSize(1);
+            assertThat(result.get(0).getContent()).isEqualTo("객체지향 프로그래밍의 핵심 개념을 설명해주세요.");
+            assertThat(result.get(0).getConversation().getId()).isEqualTo(conversation1.getId());
+        }
+
+        @Test
+        @DisplayName("성공: 검색 결과가 없는 경우 빈 리스트 반환")
+        void findByConversationIdAndContentContaining_EmptyResult() {
+            // given
+            String keyword = "존재하지않는키워드";
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+
+            // then
+            assertThat(result).isEmpty();
+        }
+
+        @Test
+        @DisplayName("성공: 다른 대화의 메시지는 검색되지 않음")
+        void findByConversationIdAndContentContaining_DifferentConversation() {
+            // given
+            String keyword = "스프링";
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+
+            // then
+            assertThat(result).isEmpty(); // conversation1에는 스프링 관련 메시지가 없음
+        }
+
+        @Test
+        @DisplayName("성공: 부분 문자열 검색")
+        void findByConversationIdAndContentContaining_PartialMatch() {
+            // given
+            String keyword = "프로그래밍";
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+
+            // then
+            assertThat(result).hasSize(1);
+            assertThat(result.get(0).getContent()).contains("프로그래밍");
+        }
+
+        @Test
+        @DisplayName("성공: 여러 대화에서 같은 키워드 검색")
+        void findByConversationIdAndContentContaining_MultipleKeywords() {
+            // given
+            String keyword = "프로젝트";
+
+            // when
+            List<Message> conversation1Result = messageRepository.findByConversationIdAndContentContaining(conversation1.getId(), keyword);
+            List<Message> conversation2Result = messageRepository.findByConversationIdAndContentContaining(conversation2.getId(), keyword);
+
+            // then
+            assertThat(conversation1Result).isEmpty(); // conversation1에는 "프로젝트" 키워드가 없음
+            assertThat(conversation2Result).hasSize(2); // conversation2에는 "프로젝트" 키워드가 2개 메시지에 있음
+            assertThat(conversation2Result).extracting(Message::getContent)
+                    .allMatch(content -> content.contains("프로젝트"));
+        }
+    }
+
+    @Nested
+    @DisplayName("countByConversationId 테스트")
+    class CountByConversationIdTest {
+
+        @Test
+        @DisplayName("성공: 특정 대화의 메시지 개수 조회")
+        void countByConversationId_Success() {
+            // when
+            long conversation1Count = messageRepository.countByConversationId(conversation1.getId());
+            long conversation2Count = messageRepository.countByConversationId(conversation2.getId());
+
+            // then
+            assertThat(conversation1Count).isEqualTo(3); // conversation1에 3개의 메시지
+            assertThat(conversation2Count).isEqualTo(2); // conversation2에 2개의 메시지
+        }
+
+        @Test
+        @DisplayName("성공: 메시지가 없는 대화의 경우 0 반환")
+        void countByConversationId_EmptyResult() {
+            // given
+            Conversation emptyConversation = Conversation.builder()
+                    .userId(3L)
+                    .build();
+            entityManager.persistAndFlush(emptyConversation);
+
+            // when
+            long count = messageRepository.countByConversationId(emptyConversation.getId());
+
+            // then
+            assertThat(count).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("성공: 존재하지 않는 대화 ID의 경우 0 반환")
+        void countByConversationId_NonExistentConversation() {
+            // given
+            UUID nonExistentConversationId = UUID.randomUUID();
+
+            // when
+            long count = messageRepository.countByConversationId(nonExistentConversationId);
+
+            // then
+            assertThat(count).isEqualTo(0);
+        }
+
+        @Test
+        @DisplayName("성공: 메시지 추가 후 개수 증가 확인")
+        void countByConversationId_AfterAddingMessage() {
+            // given
+            long initialCount = messageRepository.countByConversationId(conversation1.getId());
+
+            Message newMessage = Message.builder()
+                    .content("새로운 메시지입니다.")
+                    .senderType(SenderType.USER)
+                    .conversation(conversation1)
+                    .build();
+            entityManager.persistAndFlush(newMessage);
+
+            // when
+            long updatedCount = messageRepository.countByConversationId(conversation1.getId());
+
+            // then
+            assertThat(updatedCount).isEqualTo(initialCount + 1);
+            assertThat(updatedCount).isEqualTo(4); // 기존 3개 + 새로 추가된 1개
+        }
+
+        @Test
+        @DisplayName("성공: 다른 대화의 메시지는 카운트에 포함되지 않음")
+        void countByConversationId_IsolatedCount() {
+            // given
+            long conversation1InitialCount = messageRepository.countByConversationId(conversation1.getId());
+            long conversation2InitialCount = messageRepository.countByConversationId(conversation2.getId());
+
+            // conversation2에 새 메시지 추가
+            Message newMessage = Message.builder()
+                    .content("conversation2에 추가된 메시지")
+                    .senderType(SenderType.ASSISTANT)
+                    .conversation(conversation2)
+                    .build();
+            entityManager.persistAndFlush(newMessage);
+
+            // when
+            long conversation1FinalCount = messageRepository.countByConversationId(conversation1.getId());
+            long conversation2FinalCount = messageRepository.countByConversationId(conversation2.getId());
+
+            // then
+            assertThat(conversation1FinalCount).isEqualTo(conversation1InitialCount); // conversation1 개수는 변화 없음
+            assertThat(conversation2FinalCount).isEqualTo(conversation2InitialCount + 1); // conversation2 개수만 증가
+        }
+    }
+
+    @Nested
+    @DisplayName("findByConversationIdOrderByCreatedDateAsc 페이징 테스트")
+    class FindByConversationIdOrderByCreatedDateAscTest {
+
+        @Test
+        @DisplayName("성공: 시간순(ASC) 정렬이 올바르게 동작")
+        void findByConversationIdOrderByCreatedDateAsc_Success() {
+            // given
+            Pageable pageable = PageRequest.of(0, 10);
+
+            // when
+            Page<Message> result = messageRepository.findByConversationIdOrderByCreatedDateAsc(conversation1.getId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(3);
+            assertThat(result.getContent().get(0).getContent()).isEqualTo("안녕하세요! 자바 공부를 시작해봅시다."); // 가장 오래된
+            assertThat(result.getContent().get(1).getContent()).isEqualTo("자바의 기본 문법에 대해 알아보겠습니다.");
+            assertThat(result.getContent().get(2).getContent()).isEqualTo("객체지향 프로그래밍의 핵심 개념을 설명해주세요."); // 가장 최근
+        }
+
+        @Test
+        @DisplayName("성공: 페이징이 올바르게 동작")
+        void findByConversationIdOrderByCreatedDateAsc_Paging() {
+            // given
+            Pageable pageable = PageRequest.of(0, 2); // 페이지 크기 2
+
+            // when
+            Page<Message> result = messageRepository.findByConversationIdOrderByCreatedDateAsc(conversation1.getId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(2);
+            assertThat(result.getTotalElements()).isEqualTo(3);
+            assertThat(result.getTotalPages()).isEqualTo(2);
+            assertThat(result.isFirst()).isTrue();
+            assertThat(result.isLast()).isFalse();
+        }
+    }
+
+    @Nested
+    @DisplayName("findByConversationIdOrderByCreatedDateDesc 페이징 테스트")
+    class FindByConversationIdOrderByCreatedDateDescTest {
+
+        @Test
+        @DisplayName("성공: 시간순(DESC) 정렬이 올바르게 동작")
+        void findByConversationIdOrderByCreatedDateDesc_Success() {
+            // given
+            Pageable pageable = PageRequest.of(0, 10);
+
+            // when
+            Page<Message> result = messageRepository.findByConversationIdOrderByCreatedDateDesc(conversation1.getId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(3);
+            assertThat(result.getContent().get(0).getContent()).isEqualTo("객체지향 프로그래밍의 핵심 개념을 설명해주세요."); // 가장 최근
+            assertThat(result.getContent().get(1).getContent()).isEqualTo("자바의 기본 문법에 대해 알아보겠습니다.");
+            assertThat(result.getContent().get(2).getContent()).isEqualTo("안녕하세요! 자바 공부를 시작해봅시다."); // 가장 오래된
+        }
+
+        @Test
+        @DisplayName("성공: 페이징이 올바르게 동작")
+        void findByConversationIdOrderByCreatedDateDesc_Paging() {
+            // given
+            Pageable pageable = PageRequest.of(0, 2); // 페이지 크기 2
+
+            // when
+            Page<Message> result = messageRepository.findByConversationIdOrderByCreatedDateDesc(conversation1.getId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(2);
+            assertThat(result.getTotalElements()).isEqualTo(3);
+            assertThat(result.getTotalPages()).isEqualTo(2);
+            assertThat(result.isFirst()).isTrue();
+            assertThat(result.isLast()).isFalse();
+        }
+    }
+
+    @Nested
+    @DisplayName("findByConversationIdOrderByCreatedDateAsc 리스트 테스트")
+    class FindByConversationIdOrderByCreatedDateAscListTest {
+
+        @Test
+        @DisplayName("성공: 시간순(ASC) 정렬된 전체 메시지 조회")
+        void findByConversationIdOrderByCreatedDateAsc_List_Success() {
+            // when
+            List<Message> result = messageRepository.findByConversationIdOrderByCreatedDateAsc(conversation1.getId());
+
+            // then
+            assertThat(result).hasSize(3);
+            assertThat(result.get(0).getContent()).isEqualTo("안녕하세요! 자바 공부를 시작해봅시다."); // 가장 오래된
+            assertThat(result.get(1).getContent()).isEqualTo("자바의 기본 문법에 대해 알아보겠습니다.");
+            assertThat(result.get(2).getContent()).isEqualTo("객체지향 프로그래밍의 핵심 개념을 설명해주세요."); // 가장 최근
+        }
+
+        @Test
+        @DisplayName("성공: 빈 대화의 경우 빈 리스트 반환")
+        void findByConversationIdOrderByCreatedDateAsc_EmptyResult() {
+            // given
+            Conversation emptyConversation = Conversation.builder()
+                    .userId(3L)
+                    .build();
+            entityManager.persistAndFlush(emptyConversation);
+
+            // when
+            List<Message> result = messageRepository.findByConversationIdOrderByCreatedDateAsc(emptyConversation.getId());
+
+            // then
+            assertThat(result).isEmpty();
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/service/MessageServiceTest.java">
+package com.synapse.chat_service.service;
+
+import com.synapse.chat_service.domain.entity.Conversation;
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.dto.request.MessageRequest;
+import com.synapse.chat_service.dto.response.MessageResponse;
+import com.synapse.chat_service.exception.commonexception.NotFoundException;
+import com.synapse.chat_service.domain.repository.ConversationRepository;
+import com.synapse.chat_service.domain.repository.MessageRepository;
+import com.synapse.chat_service.session.RedisAiChatManager;
+import com.synapse.chat_service.session.RedisSessionManager;
+import org.springframework.data.redis.core.RedisTemplate;
+import com.synapse.chat_service.testutil.TestObjectFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
+
+@SpringBootTest
+@ActiveProfiles("test")
+@Transactional
+@DisplayName("MessageService 통합 테스트")
+class MessageServiceTest {
+
+    @Autowired
+    private MessageService messageService;
+
+    @Autowired
+    private ConversationRepository conversationRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
+
+    @MockitoBean
+    private RedisTemplate<String, Object> redisTemplate;
+
+    @MockitoBean
+    private RedisAiChatManager redisAiChatManager;
+
+    @MockitoBean
+    private RedisSessionManager redisSessionManager;
+
+    private Conversation testConversation;
+    private Message testMessage;
+
+    @BeforeEach
+    void setUp() {
+        // 테스트용 대화 생성
+        testConversation = TestObjectFactory.createConversation(1L);
+        testConversation = conversationRepository.save(testConversation);
+
+        // 테스트용 메시지 생성
+        testMessage = TestObjectFactory.createUserMessage(testConversation, "테스트 메시지");
+        testMessage = messageRepository.save(testMessage);
+    }
+
+    @Nested
+    @DisplayName("메시지 생성")
+    class CreateMessage {
+
+        @Test
+        @DisplayName("성공: 유효한 메시지 생성")
+        void createMessage_Success() {
+            // given
+            MessageRequest.Create request = new MessageRequest.Create(
+                    testConversation.getUserId(),
+                    SenderType.USER,
+                    "새로운 메시지"
+            );
+
+            // when
+            MessageResponse.Detail response = messageService.createMessage(request);
+
+            // then
+            assertThat(response).isNotNull();
+            assertThat(response.content()).isEqualTo("새로운 메시지");
+            assertThat(response.senderType()).isEqualTo(SenderType.USER);
+            assertThat(response.conversationId()).isEqualTo(testConversation.getId());
+        }
+
+        @Test
+        @DisplayName("성공: 새로운 사용자로 대화 생성")
+        void createMessage_NewUser() {
+            // given
+            Long newUserId = 999L;
+            MessageRequest.Create request = new MessageRequest.Create(
+                    newUserId,
+                    SenderType.USER,
+                    "새 사용자의 첫 메시지"
+            );
+
+            // when
+            MessageResponse.Detail response = messageService.createMessage(request);
+
+            // then
+            assertThat(response).isNotNull();
+            assertThat(response.content()).isEqualTo("새 사용자의 첫 메시지");
+            assertThat(response.senderType()).isEqualTo(SenderType.USER);
+        }
+    }
+
+    @Nested
+    @DisplayName("메시지 조회")
+    class GetMessage {
+
+        @Test
+        @DisplayName("성공: 메시지 조회")
+        void getMessage_Success() {
+            // when
+            MessageResponse.Detail result = messageService.getMessage(testMessage.getId());
+
+            // then
+            assertThat(result).isNotNull();
+            assertThat(result.id()).isEqualTo(testMessage.getId());
+            assertThat(result.conversationId()).isEqualTo(testConversation.getId());
+            assertThat(result.senderType()).isEqualTo(SenderType.USER);
+            assertThat(result.content()).isEqualTo("테스트 메시지");
+        }
+
+        @Test
+        @DisplayName("실패: 메시지를 찾을 수 없음")
+        void getMessage_MessageNotFound() {
+            // given
+            Long nonExistentMessageId = 999L;
+
+            // when & then
+            assertThatThrownBy(() -> messageService.getMessage(nonExistentMessageId))
+                    .isInstanceOf(NotFoundException.class);
+        }
+    }
+
+    @Nested
+    @DisplayName("getMessagesByConversationId 테스트")
+    class GetMessagesByConversationIdTest {
+
+        @Test
+        @DisplayName("성공: 사용자 ID로 메시지 목록 조회")
+        void getMessagesByUserId_Success() {
+            // when
+            List<MessageResponse.Simple> result = messageService.getMessagesByUserId(testConversation.getUserId());
+
+            // then
+            assertThat(result).hasSize(1);
+            assertThat(result.get(0).id()).isEqualTo(testMessage.getId());
+            assertThat(result.get(0).conversationId()).isEqualTo(testConversation.getId());
+            assertThat(result.get(0).senderType()).isEqualTo(SenderType.USER);
+            assertThat(result.get(0).content()).isEqualTo("테스트 메시지");
+        }
+
+        @Test
+        @DisplayName("성공: 존재하지 않는 사용자 ID로 빈 목록 조회")
+        void getMessagesByUserId_EmptyResult() {
+            // given
+            Long nonExistentUserId = 999L;
+
+            // when
+            List<MessageResponse.Simple> result = messageService.getMessagesByUserId(nonExistentUserId);
+
+            // then
+            assertThat(result).isEmpty();
+        }
+    }
+
+    @Nested
+    @DisplayName("getMessagesByUserIdWithPaging 테스트")
+    class GetMessagesByUserIdWithPagingTest {
+
+        @Test
+        @DisplayName("성공: 페이징된 메시지 조회 (오름차순)")
+        void getMessagesByUserIdWithPaging_Success_Ascending() {
+            // given
+            Pageable pageable = PageRequest.of(0, 10);
+
+            // when
+            Page<MessageResponse.Simple> result = messageService.getMessagesByUserIdWithPaging(testConversation.getUserId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(1);
+            assertThat(result.getContent().get(0).id()).isEqualTo(testMessage.getId());
+            assertThat(result.getContent().get(0).conversationId()).isEqualTo(testConversation.getId());
+            assertThat(result.getContent().get(0).senderType()).isEqualTo(SenderType.USER);
+            assertThat(result.getContent().get(0).content()).isEqualTo("테스트 메시지");
+        }
+
+        @Test
+        @DisplayName("성공: 존재하지 않는 사용자 ID로 빈 페이지 조회")
+        void getMessagesByUserIdWithPaging_EmptyResult() {
+            // given
+            Pageable pageable = PageRequest.of(0, 10);
+            Long nonExistentUserId = 999L;
+
+            // when
+            Page<MessageResponse.Simple> result = messageService.getMessagesByUserIdWithPaging(nonExistentUserId, pageable);
+
+            // then
+            assertThat(result.getContent()).isEmpty();
+            assertThat(result.getTotalElements()).isEqualTo(0);
+        }
+    }
+
+    @Nested
+    @DisplayName("getMessagesRecentFirst 테스트")
+    class GetMessagesRecentFirstTest {
+
+        @Test
+        @DisplayName("성공: 최근 메시지 조회 (내림차순)")
+        void getMessagesRecentFirst_Success() {
+            // given
+            Pageable pageable = PageRequest.of(0, 10);
+
+            // when
+            Page<MessageResponse.Simple> result = messageService.getMessagesRecentFirst(testConversation.getUserId(), pageable);
+
+            // then
+            assertThat(result.getContent()).hasSize(1);
+            assertThat(result.getContent().get(0).id()).isEqualTo(testMessage.getId());
+            assertThat(result.getContent().get(0).conversationId()).isEqualTo(testConversation.getId());
+            assertThat(result.getContent().get(0).senderType()).isEqualTo(SenderType.USER);
+            assertThat(result.getContent().get(0).content()).isEqualTo("테스트 메시지");
+        }
+    }
+
+    @Nested
+    @DisplayName("searchMessages 테스트")
+    class SearchMessagesTest {
+
+        @Test
+        @DisplayName("성공: 키워드로 메시지 검색")
+        void searchMessages_Success() {
+            // given
+            String keyword = "테스트";
+
+            // when
+            List<MessageResponse.Simple> result = messageService.searchMessages(testConversation.getUserId(), keyword);
+
+            // then
+            assertThat(result).hasSize(1);
+            assertThat(result.get(0).id()).isEqualTo(testMessage.getId());
+            assertThat(result.get(0).conversationId()).isEqualTo(testConversation.getId());
+            assertThat(result.get(0).senderType()).isEqualTo(SenderType.USER);
+            assertThat(result.get(0).content()).isEqualTo("테스트 메시지");
+            assertThat(result.get(0).content()).contains(keyword);
+        }
+    }
+
+    @Nested
+    @DisplayName("메시지 삭제")
+    class DeleteMessage {
+
+        @Test
+        @DisplayName("성공: 메시지 삭제")
+        void deleteMessage_Success() {
+            // when
+            messageService.deleteMessage(testMessage.getId());
+
+            // then
+            assertThatThrownBy(() -> messageService.getMessage(testMessage.getId()))
+                    .isInstanceOf(NotFoundException.class);
+        }
+
+        @Test
+        @DisplayName("실패: 메시지를 찾을 수 없음")
+        void deleteMessage_MessageNotFound() {
+            // given
+            Long nonExistentMessageId = 999L;
+
+            // when & then
+            assertThatThrownBy(() -> messageService.deleteMessage(nonExistentMessageId))
+                    .isInstanceOf(NotFoundException.class);
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/test/java/com/synapse/chat_service/testutil/TestObjectFactory.java">
+package com.synapse.chat_service.testutil;
+
+import com.synapse.chat_service.domain.entity.Conversation;
+import com.synapse.chat_service.domain.entity.ChatUsage;
+import com.synapse.chat_service.domain.entity.Message;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.domain.entity.enums.SubscriptionType;
+
+import java.lang.reflect.Field;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+/**
+ * 테스트 객체 생성을 위한 팩토리 클래스
+ * 테스트 데이터 생성 로직을 중앙에서 관리하여 유지보수성을 향상시킵니다.
+ */
+public class TestObjectFactory {
+
+    // Conversation 생성 메서드들
+    public static Conversation createConversation(Long userId) {
+        return Conversation.builder()
+                .userId(userId)
+                .build();
+    }
+
+    public static Conversation createDefaultConversation() {
+        return createConversation(1L);
+    }
+
+    public static Conversation createConversationWithUserId(Long userId) {
+        return createConversation(userId);
+    }
+
+    public static Conversation createConversationWithId(UUID id, Long userId) {
+        Conversation conversation = Conversation.builder()
+                .userId(userId)
+                .build();
+        setId(conversation, id);
+        return conversation;
+    }
+
+    public static Conversation createConversationWithCreatedDate(Long userId, LocalDateTime createdDate) {
+        Conversation conversation = createConversation(userId);
+        setCreatedDate(conversation, createdDate);
+        return conversation;
+    }
+
+    // Message 생성 메서드들
+    public static Message createMessage(Conversation conversation, SenderType senderType, String content) {
+        return Message.builder()
+                .conversation(conversation)
+                .senderType(senderType)
+                .content(content)
+                .build();
+    }
+
+    public static Message createUserMessage(Conversation conversation, String content) {
+        return createMessage(conversation, SenderType.USER, content);
+    }
+
+    public static Message createAssistantMessage(Conversation conversation, String content) {
+        return createMessage(conversation, SenderType.ASSISTANT, content);
+    }
+
+    public static Message createDefaultUserMessage(Conversation conversation) {
+        return createUserMessage(conversation, "사용자 테스트 메시지");
+    }
+
+    public static Message createDefaultAssistantMessage(Conversation conversation) {
+        return createAssistantMessage(conversation, "AI 테스트 응답");
+    }
+
+    public static Message createMessageWithId(Long id, Conversation conversation, SenderType senderType, String content) {
+        Message message = Message.builder()
+                .conversation(conversation)
+                .senderType(senderType)
+                .content(content)
+                .build();
+        setId(message, id);
+        return message;
+    }
+
+    public static Message createUserMessageWithId(Long id, Conversation conversation, String content) {
+        return createMessageWithId(id, conversation, SenderType.USER, content);
+    }
+
+    public static Message createAssistantMessageWithId(Long id, Conversation conversation, String content) {
+        return createMessageWithId(id, conversation, SenderType.ASSISTANT, content);
+    }
+
+    public static Message createMessageWithCreatedDate(Conversation conversation, SenderType senderType, String content, LocalDateTime createdDate) {
+        Message message = createMessage(conversation, senderType, content);
+        setCreatedDate(message, createdDate);
+        return message;
+    }
+
+    // ChatUsage 생성 메서드들
+    public static ChatUsage createChatUsage(Long userId, SubscriptionType subscriptionType, Integer messageLimit) {
+        return ChatUsage.builder()
+                .userId(userId)
+                .subscriptionType(subscriptionType)
+                .messageLimit(messageLimit)
+                .build();
+    }
+
+    public static ChatUsage createFreeChatUsage(Long userId) {
+        return createChatUsage(userId, SubscriptionType.FREE, 100);
+    }
+
+    public static ChatUsage createProChatUsage(Long userId) {
+        return createChatUsage(userId, SubscriptionType.PRO, 1000);
+    }
+
+    public static ChatUsage createDefaultFreeChatUsage() {
+        return createFreeChatUsage(1L);
+    }
+
+    public static ChatUsage createDefaultProChatUsage() {
+        return createProChatUsage(1L);
+    }
+
+
+
+    // Private 헬퍼 메서드들
+    private static void setCreatedDate(Object entity, LocalDateTime createdDate) {
+        try {
+            Field createdDateField = entity.getClass().getSuperclass().getDeclaredField("createdDate");
+            createdDateField.setAccessible(true);
+            createdDateField.set(entity, createdDate);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to set createdDate", e);
+        }
+    }
+
+    private static void setId(Object entity, Object id) {
+        try {
+            Field idField = entity.getClass().getDeclaredField("id");
+            idField.setAccessible(true);
+            idField.set(entity, id);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to set id", e);
+        }
+    }
+
+    // 테스트용 상수들
+    public static class TestConstants {
+        public static final Long DEFAULT_USER_ID = 1L;
+        public static final Long ANOTHER_USER_ID = 2L;
+        public static final String DEFAULT_USER_MESSAGE = "사용자 테스트 메시지";
+        public static final String DEFAULT_ASSISTANT_MESSAGE = "AI 테스트 응답";
+        public static final Integer FREE_MESSAGE_LIMIT = 100;
+        public static final Integer PRO_MESSAGE_LIMIT = 1000;
+    }
+}
+</file>
+
+<file path="chat_service/src/test/resources/application-test.yml">
+spring:
+    h2:
+        console:
+            enabled: true
+    datasource:
+        hikari:
+            driver-class-name: org.h2.Driver
+            jdbc-url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+            username: sa
+            password:
+
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        properties:
+            hibernate:
+                format:
+                    sql: true
+            highlight:
+                sql: true
+            hbm2ddl:
+                auto: create
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+        open-in-view: false
+        show-sql: true
+
+session:
+  expiration-hours: 24
+  max-sessions-per-user: 5
+
+logging:
+  level:
+    org:
+        hibernate:
+            orm:
+                jdbc:
+                    bind: info
+        spring:
+            transaction:
+                interceptor: info
+</file>
+
+<file path="chat_service/src/test/resources/application.yml">
+spring:
+  profiles:
+    active: test
+</file>
+
+<file path="README.md">
+# chat-server
+MSA 기반의 확장 가능한 실시간 AI 채팅 플랫폼 (Spring Cloud, Kafka, WebSocket)
+</file>
+
+<file path=".github/workflows/backend-ci.yml">
+name: Chat Service CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+  push:
+    branches:
+      - 'feature/**'
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 코드 가져오기 (Checkout)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: JDK 21 설치
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Gradle 캐시 설정
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('chat_service/**/*.gradle*', 'chat_service/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: gradlew 실행 권한 부여
+        working-directory: chat_service
+        run: chmod +x ./gradlew
+
+      - name: Gradle로 테스트 실행
+        working-directory: chat_service
+        run: ./gradlew --info test
+
+      - name: 테스트 결과 리포트
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: 'chat_service/build/test-results/test/TEST-*.xml'
+      
+      - name: 테스트 결과 게시
+        uses: mikepenz/action-junit-report@v4
+        if: always()
+        with:
+          report_paths: 'chat_service/build/test-results/test/TEST-*.xml'
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/common/BaseEntity.java">
+package com.synapse.chat_service.domain.common;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Getter
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+public abstract class BaseEntity extends BaseTimeEntity {
+    
+    @CreatedBy
+    @Column(updatable = false)
+    private String createdBy;
+
+    @LastModifiedBy
+    private String lastModifiedBy;
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/entity/ChatUsage.java">
+package com.synapse.chat_service.domain.entity;
+
+import com.synapse.chat_service.domain.common.BaseTimeEntity;
+import com.synapse.chat_service.domain.entity.enums.SubscriptionType;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+/**
+ * 사용자의 채팅 사용량 및 구독 정보를 관리하는 엔티티
+ * MSA 원칙에 따라 외부 서비스의 userId만을 참조하여 사용자를 식별합니다.
+ */
+@Entity
+@Table(name = "chat_usages")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class ChatUsage extends BaseTimeEntity {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name = "user_id", nullable = false, unique = true)
+    @NotNull
+    private Long userId;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "subscription_type", nullable = false)
+    @NotNull
+    private SubscriptionType subscriptionType;
+    
+    @Column(name = "message_count", nullable = false)
+    @Min(0)
+    private Integer messageCount = 0;
+    
+    @Column(name = "message_limit", nullable = false)
+    @Min(0)
+    private Integer messageLimit;
+    
+    @Builder
+    public ChatUsage(Long userId, SubscriptionType subscriptionType, Integer messageLimit) {
+        this.userId = userId;
+        this.subscriptionType = subscriptionType;
+        this.messageLimit = messageLimit;
+        this.messageCount = 0;
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/entity/enums/SenderType.java">
+package com.synapse.chat_service.domain.entity.enums;
+
+public enum SenderType {
+    USER,
+    ASSISTANT
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/entity/Message.java">
+package com.synapse.chat_service.domain.entity;
+
+import com.synapse.chat_service.domain.common.BaseTimeEntity;
+import com.synapse.chat_service.domain.entity.enums.SenderType;
+import com.synapse.chat_service.exception.commonexception.ValidException;
+import com.synapse.chat_service.exception.domain.ExceptionType;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "messages")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Message extends BaseTimeEntity {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "conversation_id", nullable = false)
+    @NotNull
+    private Conversation conversation;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sender_type", nullable = false)
+    @NotNull
+    private SenderType senderType;
+    
+    @NotBlank
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    private String content;
+    
+    @Builder
+    public Message(Conversation conversation, SenderType senderType, String content) {
+        validateContent(content);
+        this.conversation = conversation;
+        this.senderType = senderType;
+        this.content = content;
+    }
+    
+    /**
+     * 메시지 내용 업데이트 (도메인 로직)
+     * @param newContent 새로운 메시지 내용
+     */
+    public void updateContent(String newContent) {
+        validateContent(newContent);
+        this.content = newContent;
+    }
+    
+    private void validateContent(String content) {
+        if (content == null || content.trim().isEmpty()) {
+            throw new ValidException(ExceptionType.INVALID_INPUT_VALUE, "메시지 내용은 비어있을 수 없습니다.");
+        }
+        
+        if (content.length() > 1000) {
+            throw new ValidException(ExceptionType.INVALID_INPUT_VALUE, "메시지 내용은 1000자를 초과할 수 없습니다.");
+        }
+    }
+}
+</file>
+
+<file path="chat_service/src/main/java/com/synapse/chat_service/domain/repository/MessageRepository.java">
+package com.synapse.chat_service.domain.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.synapse.chat_service.domain.entity.Message;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface MessageRepository extends JpaRepository<Message, Long> {
+    
+    List<Message> findByConversationIdOrderByCreatedDateAsc(UUID conversationId);
+    
+    Page<Message> findByConversationIdOrderByCreatedDateAsc(UUID conversationId, Pageable pageable);
+    
+    Page<Message> findByConversationIdOrderByCreatedDateDesc(UUID conversationId, Pageable pageable);
+    
+    @Query("SELECT m FROM Message m WHERE m.conversation.id = :conversationId AND m.content LIKE %:keyword%")
+    List<Message> findByConversationIdAndContentContaining(@Param("conversationId") UUID conversationId, @Param("keyword") String keyword);
+    
+    long countByConversationId(UUID conversationId);
+}
+</file>
+
+<file path="chat_service/build.gradle">
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.4'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.synapse'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	// Session Redis
+	implementation 'org.springframework.session:spring-session-data-redis'
+	// H2
+	runtimeOnly 'com.h2database:h2'
+	// PostgreSQL
+	runtimeOnly 'org.postgresql:postgresql'
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	//Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testRuntimeOnly 'com.h2database:h2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+</file>
+
+</files>
