@@ -1,9 +1,8 @@
 package com.synapse.chat_service.testutil;
 
-import com.synapse.chat_service.domain.entity.ChatRoom;
+import com.synapse.chat_service.domain.entity.Conversation;
 import com.synapse.chat_service.domain.entity.ChatUsage;
 import com.synapse.chat_service.domain.entity.Message;
-import com.synapse.chat_service.domain.entity.User;
 import com.synapse.chat_service.domain.entity.enums.SenderType;
 import com.synapse.chat_service.domain.entity.enums.SubscriptionType;
 
@@ -17,69 +16,63 @@ import java.util.UUID;
  */
 public class TestObjectFactory {
 
-    // ChatRoom 생성 메서드들
-    public static ChatRoom createChatRoom(Long userId, String title) {
-        return ChatRoom.builder()
+    // Conversation 생성 메서드들
+    public static Conversation createConversation(Long userId) {
+        return Conversation.builder()
                 .userId(userId)
-                .title(title)
                 .build();
     }
 
-    public static ChatRoom createDefaultChatRoom() {
-        return createChatRoom(1L, "테스트 채팅방");
+    public static Conversation createDefaultConversation() {
+        return createConversation(1L);
     }
 
-    public static ChatRoom createChatRoomWithUserId(Long userId) {
-        return createChatRoom(userId, "테스트 채팅방");
+    public static Conversation createConversationWithUserId(Long userId) {
+        return createConversation(userId);
     }
 
-    public static ChatRoom createChatRoomWithTitle(String title) {
-        return createChatRoom(1L, title);
-    }
-
-    public static ChatRoom createChatRoomWithId(UUID id, Long userId, String title) {
-        ChatRoom chatRoom = ChatRoom.builder()
+    public static Conversation createConversationWithId(UUID id, Long userId) {
+        Conversation conversation = Conversation.builder()
                 .userId(userId)
-                .title(title)
                 .build();
-        setId(chatRoom, id);
-        return chatRoom;
+        setId(conversation, id);
+        return conversation;
     }
 
-    public static ChatRoom createChatRoomWithCreatedDate(Long userId, String title, LocalDateTime createdDate) {
-        ChatRoom chatRoom = createChatRoom(userId, title);
-        setCreatedDate(chatRoom, createdDate);
-        return chatRoom;
+    public static Conversation createConversationWithCreatedDate(Long userId, LocalDateTime createdDate) {
+        Conversation conversation = createConversation(userId);
+        setCreatedDate(conversation, createdDate);
+        return conversation;
     }
 
     // Message 생성 메서드들
-    public static Message createMessage(ChatRoom chatRoom, SenderType senderType, String content) {
+    public static Message createMessage(Conversation conversation, SenderType senderType, String content) {
         return Message.builder()
-                .chatRoom(chatRoom)
+                .conversation(conversation)
                 .senderType(senderType)
                 .content(content)
                 .build();
     }
 
-    public static Message createUserMessage(ChatRoom chatRoom, String content) {
-        return createMessage(chatRoom, SenderType.USER, content);
+    public static Message createUserMessage(Conversation conversation, String content) {
+        return createMessage(conversation, SenderType.USER, content);
     }
 
-    public static Message createAssistantMessage(ChatRoom chatRoom, String content) {
-        return createMessage(chatRoom, SenderType.ASSISTANT, content);
+    public static Message createAssistantMessage(Conversation conversation, String content) {
+        return createMessage(conversation, SenderType.ASSISTANT, content);
     }
 
-    public static Message createDefaultUserMessage(ChatRoom chatRoom) {
-        return createUserMessage(chatRoom, "사용자 테스트 메시지");
+    public static Message createDefaultUserMessage(Conversation conversation) {
+        return createUserMessage(conversation, "사용자 테스트 메시지");
     }
 
-    public static Message createDefaultAssistantMessage(ChatRoom chatRoom) {
-        return createAssistantMessage(chatRoom, "AI 테스트 응답");
+    public static Message createDefaultAssistantMessage(Conversation conversation) {
+        return createAssistantMessage(conversation, "AI 테스트 응답");
     }
 
-    public static Message createMessageWithId(Long id, ChatRoom chatRoom, SenderType senderType, String content) {
+    public static Message createMessageWithId(Long id, Conversation conversation, SenderType senderType, String content) {
         Message message = Message.builder()
-                .chatRoom(chatRoom)
+                .conversation(conversation)
                 .senderType(senderType)
                 .content(content)
                 .build();
@@ -87,16 +80,16 @@ public class TestObjectFactory {
         return message;
     }
 
-    public static Message createUserMessageWithId(Long id, ChatRoom chatRoom, String content) {
-        return createMessageWithId(id, chatRoom, SenderType.USER, content);
+    public static Message createUserMessageWithId(Long id, Conversation conversation, String content) {
+        return createMessageWithId(id, conversation, SenderType.USER, content);
     }
 
-    public static Message createAssistantMessageWithId(Long id, ChatRoom chatRoom, String content) {
-        return createMessageWithId(id, chatRoom, SenderType.ASSISTANT, content);
+    public static Message createAssistantMessageWithId(Long id, Conversation conversation, String content) {
+        return createMessageWithId(id, conversation, SenderType.ASSISTANT, content);
     }
 
-    public static Message createMessageWithCreatedDate(ChatRoom chatRoom, SenderType senderType, String content, LocalDateTime createdDate) {
-        Message message = createMessage(chatRoom, senderType, content);
+    public static Message createMessageWithCreatedDate(Conversation conversation, SenderType senderType, String content, LocalDateTime createdDate) {
+        Message message = createMessage(conversation, senderType, content);
         setCreatedDate(message, createdDate);
         return message;
     }
@@ -126,30 +119,7 @@ public class TestObjectFactory {
         return createProChatUsage(1L);
     }
 
-    // User 생성 메서드들
-    public static User createUser(Long id, String username, String email) {
-        return User.builder()
-                .id(id)
-                .username(username)
-                .email(email)
-                .build();
-    }
 
-    public static User createDefaultUser() {
-        return createUser(1L, "testuser1", "testuser1@example.com");
-    }
-
-    public static User createUserWithId(Long id) {
-        return createUser(id, "testuser" + id, "testuser" + id + "@example.com");
-    }
-
-    public static User createUserWithUsername(String username) {
-        return createUser(1L, username, username + "@example.com");
-    }
-
-    public static User createUserWithEmail(String email) {
-        return createUser(1L, "testuser", email);
-    }
 
     // Private 헬퍼 메서드들
     private static void setCreatedDate(Object entity, LocalDateTime createdDate) {
@@ -176,7 +146,6 @@ public class TestObjectFactory {
     public static class TestConstants {
         public static final Long DEFAULT_USER_ID = 1L;
         public static final Long ANOTHER_USER_ID = 2L;
-        public static final String DEFAULT_CHAT_ROOM_TITLE = "테스트 채팅방";
         public static final String DEFAULT_USER_MESSAGE = "사용자 테스트 메시지";
         public static final String DEFAULT_ASSISTANT_MESSAGE = "AI 테스트 응답";
         public static final Integer FREE_MESSAGE_LIMIT = 100;

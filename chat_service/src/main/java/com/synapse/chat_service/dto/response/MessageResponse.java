@@ -10,7 +10,7 @@ public class MessageResponse {
     
     public record Simple(
         Long id,
-        UUID chatRoomId,
+        UUID conversationId,
         SenderType senderType,
         String content,
         LocalDateTime createdDate
@@ -18,7 +18,7 @@ public class MessageResponse {
         public static Simple from(Message message) {
             return new Simple(
                 message.getId(),
-                message.getChatRoom().getId(),
+                message.getConversation().getId(),
                 message.getSenderType(),
                 message.getContent(),
                 message.getCreatedDate()
@@ -28,7 +28,7 @@ public class MessageResponse {
     
     public record Detail(
         Long id,
-        UUID chatRoomId,
+        UUID conversationId,
         SenderType senderType,
         String content,
         LocalDateTime createdDate,
@@ -37,7 +37,7 @@ public class MessageResponse {
         public static Detail from(Message message) {
             return new Detail(
                 message.getId(),
-                message.getChatRoom().getId(),
+                message.getConversation().getId(),
                 message.getSenderType(),
                 message.getContent(),
                 message.getCreatedDate(),

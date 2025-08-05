@@ -23,6 +23,10 @@ spring:
         open-in-view: false
         show-sql: true
 
+session:
+  expiration-hours: 24
+  max-sessions-per-user: 5
+
 logging:
   level:
     org:

@@ -5,3 +5,12 @@ local-db:
         name: chat-service
         username: donghyeon
         password: adzc1973
+
+    redis:
+        host: localhost
+        port: 6379
+        password: 1234
+        timeout: 10000
+        max-active: 8
+        max-idle: 8
+        min-idle: 0

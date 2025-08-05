@@ -15,14 +15,14 @@ import java.util.UUID;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
     
-    List<Message> findByChatRoomIdOrderByCreatedDateAsc(UUID chatRoomId);
+    List<Message> findByConversationIdOrderByCreatedDateAsc(UUID conversationId);
     
-    Page<Message> findByChatRoomIdOrderByCreatedDateAsc(UUID chatRoomId, Pageable pageable);
+    Page<Message> findByConversationIdOrderByCreatedDateAsc(UUID conversationId, Pageable pageable);
     
-    Page<Message> findByChatRoomIdOrderByCreatedDateDesc(UUID chatRoomId, Pageable pageable);
+    Page<Message> findByConversationIdOrderByCreatedDateDesc(UUID conversationId, Pageable pageable);
     
-    @Query("SELECT m FROM Message m WHERE m.chatRoom.id = :chatRoomId AND m.content LIKE %:keyword%")
-    List<Message> findByChatRoomIdAndContentContaining(@Param("chatRoomId") UUID chatRoomId, @Param("keyword") String keyword);
+    @Query("SELECT m FROM Message m WHERE m.conversation.id = :conversationId AND m.content LIKE %:keyword%")
+    List<Message> findByConversationIdAndContentContaining(@Param("conversationId") UUID conversationId, @Param("keyword") String keyword);
     
-    long countByChatRoomId(UUID chatRoomId);
+    long countByConversationId(UUID conversationId);
 }

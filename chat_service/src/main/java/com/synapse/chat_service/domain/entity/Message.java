@@ -24,9 +24,9 @@ public class Message extends BaseTimeEntity {
     private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chat_room_id", nullable = false)
+    @JoinColumn(name = "conversation_id", nullable = false)
     @NotNull
-    private ChatRoom chatRoom;
+    private Conversation conversation;
     
     @Enumerated(EnumType.STRING)
     @Column(name = "sender_type", nullable = false)
@@ -38,9 +38,9 @@ public class Message extends BaseTimeEntity {
     private String content;
     
     @Builder
-    public Message(ChatRoom chatRoom, SenderType senderType, String content) {
+    public Message(Conversation conversation, SenderType senderType, String content) {
         validateContent(content);
-        this.chatRoom = chatRoom;
+        this.conversation = conversation;
         this.senderType = senderType;
         this.content = content;
     }
