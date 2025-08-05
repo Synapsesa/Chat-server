@@ -51,12 +51,15 @@ class MessageRepositoryTest {
         entityManager.persistAndFlush(conversation1);
         entityManager.persistAndFlush(conversation2);
 
+        // 고정된 기준 시간 사용 (CI 환경에서의 안정성을 위해)
+        LocalDateTime baseTime = LocalDateTime.of(2024, 1, 1, 12, 0, 0);
+
         // 테스트용 Message 데이터 생성
-        message1 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "안녕하세요! 자바 공부를 시작해봅시다.", LocalDateTime.now().minusHours(4));
-        message2 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.ASSISTANT, "자바의 기본 문법에 대해 알아보겠습니다.", LocalDateTime.now().minusHours(3));
-        message3 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "객체지향 프로그래밍의 핵심 개념을 설명해주세요.", LocalDateTime.now().minusHours(2));
-        message4 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.USER, "스프링 부트 프로젝트를 생성하는 방법을 알려주세요.", LocalDateTime.now().minusHours(1));
-        message5 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.ASSISTANT, "Spring Initializr를 사용하여 프로젝트를 생성할 수 있습니다.", LocalDateTime.now());
+        message1 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "안녕하세요! 자바 공부를 시작해봅시다.", baseTime.minusHours(4));
+        message2 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.ASSISTANT, "자바의 기본 문법에 대해 알아보겠습니다.", baseTime.minusHours(3));
+        message3 = TestObjectFactory.createMessageWithCreatedDate(conversation1, SenderType.USER, "객체지향 프로그래밍의 핵심 개념을 설명해주세요.", baseTime.minusHours(2));
+        message4 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.USER, "스프링 부트 프로젝트를 생성하는 방법을 알려주세요.", baseTime.minusHours(1));
+        message5 = TestObjectFactory.createMessageWithCreatedDate(conversation2, SenderType.ASSISTANT, "Spring Initializr를 사용하여 프로젝트를 생성할 수 있습니다.", baseTime);
 
         // 데이터베이스에 저장
         entityManager.persistAndFlush(message1);
