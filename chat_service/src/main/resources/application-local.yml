@@ -38,6 +38,15 @@ session:
   expiration-hours: 24
   max-sessions-per-user: 5
 
+websocket:
+  security:
+    allowed-origins:
+      - "http://localhost:3000"
+      - "http://localhost:3001"
+      - "http://127.0.0.1:3000"
+      - "http://127.0.0.1:3001"
+    csrf-protection: false
+
 logging:
   level:
     org:

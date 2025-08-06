@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public record SessionInfo(
         String sessionId,
         String userId,
-        String username,
         LocalDateTime connectedAt,
         LocalDateTime lastActivityAt,
         SessionStatus status,
@@ -27,12 +26,11 @@ public record SessionInfo(
     /**
      * 새로운 AI 채팅 세션 생성을 위한 팩토리 메서드
      */
-    public static SessionInfo create(String sessionId, String userId, String username, String clientInfo) {
+    public static SessionInfo create(String sessionId, String userId, String clientInfo) {
         LocalDateTime now = LocalDateTime.now();
         return new SessionInfo(
                 sessionId,
                 userId,
-                username,
                 now,
                 now,
                 SessionStatus.CONNECTED,
@@ -47,7 +45,6 @@ public record SessionInfo(
         return new SessionInfo(
                 sessionId,
                 userId,
-                username,
                 connectedAt,
                 LocalDateTime.now(),
                 status,
@@ -62,7 +59,6 @@ public record SessionInfo(
         return new SessionInfo(
                 sessionId,
                 userId,
-                username,
                 connectedAt,
                 LocalDateTime.now(),
                 newStatus,

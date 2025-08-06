@@ -22,11 +22,11 @@ public class WebSocketSessionFacade {
      * 1. 새로운 세션 생성 (다중 기기 동시 접속 지원)
      * 2. AI 채팅 정보 조회 (MessageService에서 DB와 Redis 동기화 처리)
      */
-    public SessionInfo handleUserConnection(String sessionId, String userId, String username, String clientInfo) {
+    public SessionInfo handleUserConnection(String sessionId, String userId, String clientInfo) {
         log.info("AI 채팅 사용자 연결 처리 시작: sessionId={}, userId={}", sessionId, userId);
         
         // 1. 새로운 세션 생성 (다중 세션 지원)
-        SessionInfo sessionInfo = SessionInfo.create(sessionId, userId, username, clientInfo);
+        SessionInfo sessionInfo = SessionInfo.create(sessionId, userId, clientInfo);
         sessionManager.createSession(sessionInfo);
         
         // 2. AI 채팅 정보 조회 (MessageService에서 DB와 Redis 동기화가 이미 처리됨)
