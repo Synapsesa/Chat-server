@@ -28,11 +28,6 @@ spring:
           max-active: ${local-db.redis.max-active}
           max-idle: ${local-db.redis.max-idle}
           min-idle: ${local-db.redis.min-idle}
-  
-  session:
-    store-type: redis
-    redis:
-        namespace: spring:session
 
 session:
   expiration-hours: 24
