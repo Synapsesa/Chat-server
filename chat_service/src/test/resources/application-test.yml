@@ -1,4 +1,22 @@
 spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    payment-service:
+                        provider: payment
+                        client-id: test-service-client
+                        client-secret: test-secret
+                        authorization-grant-type: client_credentials
+                        scope: api.internal, account:read
+                provider:
+                    payment:
+                        token-uri: test-uri
+            resourceserver:
+                jwt:
+                    issuer-uri: http://test-issuer
+                    jwk-set-uri: http://test-issuer/jwks
+
     h2:
         console:
             enabled: true
@@ -23,9 +41,21 @@ spring:
         open-in-view: false
         show-sql: true
 
+secret:
+  key: a8a16408bc2e11b6b74797dbd0837948b1267d5de209df9aaab670be16343b3d5faaf94c17c7e957aca3d5f691dca32ba4dddcb053bc44fd2de2bfc593e19cc4
+
 session:
   expiration-hours: 24
   max-sessions-per-user: 5
+
+websocket:
+  security:
+    allowed-origins:
+      - "http://localhost:3000"
+      - "http://localhost:3001"
+      - "http://127.0.0.1:3000"
+      - "http://127.0.0.1:3001"
+    csrf-protection: false
 
 logging:
   level:
