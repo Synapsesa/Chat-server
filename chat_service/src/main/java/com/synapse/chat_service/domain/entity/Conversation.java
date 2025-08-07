@@ -1,7 +1,6 @@
 package com.synapse.chat_service.domain.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,15 +28,14 @@ public class Conversation extends BaseTimeEntity {
     @Column(name = "conversation_id", columnDefinition = "UUID")
     private UUID id;
     
-    @NotNull
-    @Column(name = "user_id", nullable = false, unique = true)
-    private Long userId;
+    @Column(name = "user_id", nullable = false, unique = true, columnDefinition = "uuid")
+    private UUID userId;
     
     @OneToMany(mappedBy = "conversation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Message> messages = new ArrayList<>();
     
     @Builder
-    public Conversation(Long userId) {
+    public Conversation(UUID userId) {
         this.userId = userId;
     }
 }

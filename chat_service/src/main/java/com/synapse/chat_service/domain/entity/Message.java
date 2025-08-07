@@ -6,7 +6,6 @@ import com.synapse.chat_service.exception.commonexception.ValidException;
 import com.synapse.chat_service.exception.domain.ExceptionType;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -33,7 +32,6 @@ public class Message extends BaseTimeEntity {
     @NotNull
     private SenderType senderType;
     
-    @NotBlank
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
     

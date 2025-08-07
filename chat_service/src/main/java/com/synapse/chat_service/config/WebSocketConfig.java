@@ -31,9 +31,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         // 클라이언트에서 메시지를 받을 때 사용할 prefix
         config.setApplicationDestinationPrefixes("/app");
         // 클라이언트가 구독할 때 사용할 prefix (AI 응답 수신용)
-        config.enableSimpleBroker("/assistant")
+        config.enableSimpleBroker("/topic", "/queue")
                 .setTaskScheduler(heartbeatScheduler())
                 .setHeartbeatValue(new long[] {10000, 10000});
+        config.setUserDestinationPrefix("/user");
     }
 
     @Override

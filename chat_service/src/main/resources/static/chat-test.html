@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .chat-container {
+            border: 1px solid #ddd;
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #e3f2fd;
+            text-align: right;
+        }
+        .ai-message {
+            background-color: #f1f8e9;
+        }
+        .error-message {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        input, select, button {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #messageInput {
+            flex: 1;
+        }
+        .status {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .connected {
+            background-color: #e8f5e8;
+            color: #2e7d32;
+        }
+        .disconnected {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Chat WebSocket Test</h1>
+    
+    <div id="status" class="status disconnected">연결 끊김</div>
+    
+    <div class="input-container">
+        <button id="connectBtn" onclick="connect()">연결</button>
+        <button id="disconnectBtn" onclick="disconnect()" disabled>연결 해제</button>
+    </div>
+    
+    <div class="input-container">
+        <select id="modelSelect">
+            <option value="GPT">GPT</option>
+            <option value="CLAUDE">Claude</option>
+            <option value="GEMINI">Gemini</option>
+        </select>
+        <input type="text" id="messageInput" placeholder="메시지를 입력하세요..." disabled>
+        <button id="sendBtn" onclick="sendMessage()" disabled>전송</button>
+    </div>
+    
+    <div id="chatContainer" class="chat-container"></div>
+
+    <script>
+        let stompClient = null;
+        let sessionId = 'user_' + Math.random().toString(36).substr(2, 9);
+
+        function connect() {
+            const socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                updateStatus(true);
+                
+                // AI 응답 구독
+                stompClient.subscribe('/assistant/response', function (response) {
+                    const chatResponse = JSON.parse(response.body);
+                    displayMessage(chatResponse);
+                });
+                
+            }, function(error) {
+                console.error('Connection error: ', error);
+                updateStatus(false);
+            });
+        }
+
+        function disconnect() {
+            if (stompClient !== null) {
+                stompClient.disconnect();
+            }
+            updateStatus(false);
+            console.log("Disconnected");
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const modelSelect = document.getElementById('modelSelect');
+            const message = messageInput.value.trim();
+            
+            if (message && stompClient) {
+                const chatMessage = {
+                    modelType: modelSelect.value,
+                    prompt: message,
+                    sessionId: sessionId,
+                    messageId: 'msg_' + Date.now()
+                };
+                
+                // 사용자 메시지 표시
+                displayUserMessage(message, modelSelect.value);
+                
+                // 서버로 메시지 전송
+                stompClient.send("/app/chat", {}, JSON.stringify(chatMessage));
+                
+                messageInput.value = '';
+            }
+        }
+
+        function displayUserMessage(message, modelType) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user-message';
+            messageDiv.innerHTML = `
+                <strong>You → ${modelType}:</strong><br>
+                ${message}<br>
+                <small>${new Date().toLocaleTimeString()}</small>
+            `;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function displayMessage(chatResponse) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            
+            if (chatResponse.status === 'SUCCESS') {
+                messageDiv.className = 'message ai-message';
+                messageDiv.innerHTML = `
+                    <strong>${chatResponse.modelType} AI:</strong><br>
+                    ${chatResponse.response}<br>
+                    <small>${new Date(chatResponse.timestamp).toLocaleTimeString()}</small>
+                `;
+            } else {
+                messageDiv.className = 'message error-message';
+                messageDiv.innerHTML = `
+                    <strong>Error:</strong><br>
+                    ${chatResponse.errorMessage}<br>
+                    <small>${new Date(chatResponse.timestamp).toLocaleTimeString()}</small>
+                `;
+            }
+            
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function updateStatus(connected) {
+            const status = document.getElementById('status');
+            const connectBtn = document.getElementById('connectBtn');
+            const disconnectBtn = document.getElementById('disconnectBtn');
+            const messageInput = document.getElementById('messageInput');
+            const sendBtn = document.getElementById('sendBtn');
+            
+            if (connected) {
+                status.textContent = '연결됨 (세션: ' + sessionId + ')';
+                status.className = 'status connected';
+                connectBtn.disabled = true;
+                disconnectBtn.disabled = false;
+                messageInput.disabled = false;
+                sendBtn.disabled = false;
+            } else {
+                status.textContent = '연결 끊김';
+                status.className = 'status disconnected';
+                connectBtn.disabled = false;
+                disconnectBtn.disabled = true;
+                messageInput.disabled = true;
+                sendBtn.disabled = true;
+            }
+        }
+
+        // Enter 키로 메시지 전송
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // 페이지 로드 시 자동 연결
+        window.onload = function() {
+            connect();
+        };
+    </script>
+</body>
+</html>

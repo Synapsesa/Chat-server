@@ -3,7 +3,6 @@ package com.synapse.chat_service.service;
 import com.synapse.chat_service.domain.entity.Conversation;
 import com.synapse.chat_service.domain.entity.Message;
 import com.synapse.chat_service.domain.entity.enums.SenderType;
-import com.synapse.chat_service.dto.request.MessageRequest;
 import com.synapse.chat_service.dto.response.MessageResponse;
 import com.synapse.chat_service.exception.commonexception.NotFoundException;
 import com.synapse.chat_service.domain.repository.ConversationRepository;
@@ -74,15 +73,12 @@ class MessageServiceTest {
         @Test
         @DisplayName("성공: 유효한 메시지 생성")
         void createMessage_Success() {
-            // given
-            MessageRequest.Create request = new MessageRequest.Create(
+            // when
+            MessageResponse.History response = messageService.createMessage(
                     testConversation.getUserId(),
                     SenderType.USER,
                     "새로운 메시지"
             );
-
-            // when
-            MessageResponse.Detail response = messageService.createMessage(request);
 
             // then
             assertThat(response).isNotNull();
@@ -96,14 +92,13 @@ class MessageServiceTest {
         void createMessage_NewUser() {
             // given
             Long newUserId = 999L;
-            MessageRequest.Create request = new MessageRequest.Create(
+
+            // when
+            MessageResponse.History response = messageService.createMessage(
                     newUserId,
                     SenderType.USER,
                     "새 사용자의 첫 메시지"
             );
-
-            // when
-            MessageResponse.Detail response = messageService.createMessage(request);
 
             // then
             assertThat(response).isNotNull();
@@ -120,7 +115,7 @@ class MessageServiceTest {
         @DisplayName("성공: 메시지 조회")
         void getMessage_Success() {
             // when
-            MessageResponse.Detail result = messageService.getMessage(testMessage.getId());
+            MessageResponse.History result = messageService.getMessage(testMessage.getId());
 
             // then
             assertThat(result).isNotNull();
@@ -150,7 +145,7 @@ class MessageServiceTest {
         @DisplayName("성공: 사용자 ID로 메시지 목록 조회")
         void getMessagesByUserId_Success() {
             // when
-            List<MessageResponse.Simple> result = messageService.getMessagesByUserId(testConversation.getUserId());
+            List<MessageResponse.History> result = messageService.getMessagesByUserId(testConversation.getUserId());
 
             // then
             assertThat(result).hasSize(1);
@@ -167,7 +162,7 @@ class MessageServiceTest {
             Long nonExistentUserId = 999L;
 
             // when
-            List<MessageResponse.Simple> result = messageService.getMessagesByUserId(nonExistentUserId);
+            List<MessageResponse.History> result = messageService.getMessagesByUserId(nonExistentUserId);
 
             // then
             assertThat(result).isEmpty();
@@ -185,7 +180,7 @@ class MessageServiceTest {
             Pageable pageable = PageRequest.of(0, 10);
 
             // when
-            Page<MessageResponse.Simple> result = messageService.getMessagesByUserIdWithPaging(testConversation.getUserId(), pageable);
+            Page<MessageResponse.History> result = messageService.getMessagesByUserIdWithPaging(testConversation.getUserId(), pageable);
 
             // then
             assertThat(result.getContent()).hasSize(1);
@@ -203,7 +198,7 @@ class MessageServiceTest {
             Long nonExistentUserId = 999L;
 
             // when
-            Page<MessageResponse.Simple> result = messageService.getMessagesByUserIdWithPaging(nonExistentUserId, pageable);
+            Page<MessageResponse.History> result = messageService.getMessagesByUserIdWithPaging(nonExistentUserId, pageable);
 
             // then
             assertThat(result.getContent()).isEmpty();
@@ -222,7 +217,7 @@ class MessageServiceTest {
             Pageable pageable = PageRequest.of(0, 10);
 
             // when
-            Page<MessageResponse.Simple> result = messageService.getMessagesRecentFirst(testConversation.getUserId(), pageable);
+            Page<MessageResponse.History> result = messageService.getMessagesRecentFirst(testConversation.getUserId(), pageable);
 
             // then
             assertThat(result.getContent()).hasSize(1);
@@ -244,7 +239,7 @@ class MessageServiceTest {
             String keyword = "테스트";
 
             // when
-            List<MessageResponse.Simple> result = messageService.searchMessages(testConversation.getUserId(), keyword);
+            List<MessageResponse.History> result = messageService.searchMessages(testConversation.getUserId(), keyword);
 
             // then
             assertThat(result).hasSize(1);
