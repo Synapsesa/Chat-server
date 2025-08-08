@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -21,10 +22,10 @@ public class AiChatController {
     private final MessageService messageService;
     
     @GetMapping("/conversation/list")
-    public ResponseEntity<MessageResponse.ConversationInfo> getMyConversationList(
+    public ResponseEntity<List<MessageResponse.ConversationInfo>> getMyConversationList(
         @AuthenticationPrincipal UUID userId
     ) {
-        MessageResponse.ConversationInfo response = messageService.getConversationByUserId(userId);
+        List<MessageResponse.ConversationInfo> response = messageService.getConversationListByUserId(userId);
         return ResponseEntity.ok(response);
     }
 
@@ -32,7 +33,6 @@ public class AiChatController {
     public ResponseEntity<ChatHistoryResponse> getMyAiChatHistoryRecentFirst(
         @AuthenticationPrincipal UUID userId,
         @Valid ChatMessageRequest request
-
     ) {
         ChatHistoryResponse response = messageService.getMessagesRecentFirst(userId, request.size(), request.cursor());
         return ResponseEntity.ok(response);
