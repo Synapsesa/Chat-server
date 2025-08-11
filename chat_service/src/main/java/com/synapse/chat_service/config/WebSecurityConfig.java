@@ -10,13 +10,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
+import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 
 import com.synapse.chat_service.filter.CustomAuthenticationFilter;
 
@@ -40,19 +39,15 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                )
-                
-                .addFilterBefore(customAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .csrf(csrf -> csrf.disable())
+                .addFilterBefore(customAuthenticationFilter, BearerTokenAuthenticationFilter.class)
 
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/chat-test.html").permitAll()
                         // WebSocket 핸드셰이크 경로 ("/ws/**") - 인증된 사용자만 허용
-                        .requestMatchers("/ws/**").authenticated()
+                        .requestMatchers("/ws/**").permitAll()
                         // 채팅 관련 API ("/api/v1/messages/**", "/api/v1/ai-chat/**") - 인증된 사용자만 허용
                         .requestMatchers("/api/v1/messages/**", "/api/v1/ai-chat/**").authenticated()
-                        // CSRF 토큰 발급 API ("/api/v1/csrf-token") - 인증된 사용자만 허용
-                        .requestMatchers("/api/v1/csrf-token").authenticated()
                         .requestMatchers("/api/internal/**").access(AuthorizationManagers.allOf(
                                 AuthorityAuthorizationManager.hasAuthority("SCOPE_api.internal"),
                                 AuthorityAuthorizationManager.hasAuthority("SCOPE_chat:read")

@@ -30,7 +30,7 @@ public class ClaudeService implements AIModelService {
         log.debug("Claude 모델로 응답 생성 시작 - prompt length: {}", prompt.length());
         try {
             String response = anthropicChatModel.call(prompt);
-            log.debug("Claude 응답 생성 완료 - response length: {}", response.length());
+            log.debug("Claude 응답 생성 완료 - response length: {}", response != null ? response.length() : "null");
             return CompletableFuture.completedFuture(response);
         } catch (Exception e) {
             log.error("Claude 응답 생성 실패", e);

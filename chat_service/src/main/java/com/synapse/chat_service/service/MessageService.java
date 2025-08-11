@@ -56,7 +56,7 @@ public class MessageService {
      * 사용자의 대화를 조회하거나 없으면 새로 생성
      * Redis의 AiChatInfo와 DB의 Conversation 간 일관성을 보장
      */
-    private Conversation getOrCreateConversation(UUID userId) {
+    public Conversation getOrCreateConversation(UUID userId) {
         return findConversationByUserId(userId)
                 .map(conversation -> {
                     // 기존 대화가 있으면 Redis 정보 동기화
@@ -86,7 +86,7 @@ public class MessageService {
     }
 
     private Optional<List<Conversation>> findConversationListByUserId(UUID userId) {
-        return conversationRepository.findByUserIdOrderByCreatedAtDesc(userId);
+        return conversationRepository.findByUserIdOrderByCreatedDateDesc(userId);
     }
     
     /**

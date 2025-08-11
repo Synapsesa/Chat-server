@@ -33,7 +33,7 @@ public class GPTService implements AIModelService {
         log.debug("GPT 모델로 응답 생성 시작 - prompt length: {}", prompt.length());
         try {
             String response = openAiChatModel.call(prompt);
-            log.debug("GPT 응답 생성 완료 - response length: {}", response.length());
+            log.debug("GPT 응답 생성 완료 - response length: {}", response != null ? response.length() : "null");
             return CompletableFuture.completedFuture(response);
         } catch (Exception e) {
             log.error("GPT 응답 생성 실패", e);

@@ -33,8 +33,10 @@ public class JwtTokenProvider {
         this.verifier = JWT.require(this.algorithm).build();
     }
 
-    public final Authentication verifyAndDecode(String token) throws JWTVerificationException {
-        DecodedJWT decodedJWT = verifier.verify(token);
+    public final Authentication verifyAndDecode(String header) throws JWTVerificationException {
+        String jwtToken = header.substring(7);
+
+        DecodedJWT decodedJWT = verifier.verify(jwtToken);
         String userId = decodedJWT.getSubject();
 
         Claim authClaim = decodedJWT.getClaim("role");

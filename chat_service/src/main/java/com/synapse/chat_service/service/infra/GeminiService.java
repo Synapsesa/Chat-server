@@ -33,7 +33,7 @@ public class GeminiService implements AIModelService {
         log.debug("Gemini 모델로 응답 생성 시작 - prompt length: {}", prompt.length());
         try {
             String response = vertexAiGeminiChatModel.call(prompt);
-            log.debug("Gemini 응답 생성 완료 - response length: {}", response.length());
+            log.debug("Gemini 응답 생성 완료 - response length: {}", response != null ? response.length() : "null");
             return CompletableFuture.completedFuture(response);
         } catch (Exception e) {
             log.error("Gemini 응답 생성 실패", e);
