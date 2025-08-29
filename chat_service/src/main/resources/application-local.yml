@@ -28,6 +28,33 @@ spring:
           max-active: ${local-db.redis.max-active}
           max-idle: ${local-db.redis.max-idle}
           min-idle: ${local-db.redis.min-idle}
+  
+  ai:
+    openai:
+      api-key: ${local-ai.openai.api-key}
+      chat:
+        options:
+          model: ${local-ai.openai.chat.options.model}
+          temperature: ${local-ai.openai.chat.options.temperature}
+
+      
+    anthropic:
+      claude:
+        api-key: ${local-ai.anthropic.claude.api-key}
+        chat:
+          options:
+            model: ${local-ai.anthropic.claude.chat.options.model}
+            temperature: ${local-ai.anthropic.claude.chat.options.temperature}
+    
+    vertex:
+      ai:
+        gemini:
+          project-id: ${local-ai.vertex.ai.gemini.project-id}
+          location: ${local-ai.vertex.ai.gemini.location}
+          chat:
+            options:
+              model: ${local-ai.vertex.ai.gemini.chat.options.model}
+              temperature: ${local-ai.vertex.ai.gemini.chat.options.temperature}
 
 session:
   expiration-hours: 24

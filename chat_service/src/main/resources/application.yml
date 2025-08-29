@@ -14,3 +14,6 @@ spring:
     config:
         import:
             - security/application-db.yml
+            - security/application-api.yml
+            - security/application-jwt.yml
+            - security/application-oauth2.yml

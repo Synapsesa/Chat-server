@@ -52,15 +52,21 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
      * 사용자 인증 정보를 확인하고 WebSocket 세션을 생성합니다.
      */
     private void handleConnect(StompHeaderAccessor accessor) {
-        String jwtToken = accessor.getFirstNativeHeader("Authorization");
-            
-        Authentication authentication = jwtTokenProvider.verifyAndDecode(jwtToken);
-        // STOMP 세션에 인증 정보 저장
-        accessor.setUser(authentication);
+        String header = accessor.getFirstNativeHeader("Authorization");
+
+        if (header == null || !header.startsWith("Bearer ")) {
+            log.warn("CONNECT 프레임에서 유효한 Authorization 헤더가 없습니다: sessionId={}", accessor.getSessionId());
+            return;
+        }
+   
+        Authentication authentication = jwtTokenProvider.verifyAndDecode(header);
         
         String sessionId = accessor.getSessionId();
         String userId = authentication.getName();
         
+        // STOMP 세션에 인증 정보 저장
+        accessor.setUser(authentication);
+
         if (userId == null) {
             log.warn("CONNECT 프레임에서 인증되지 않은 사용자 감지: sessionId={}", sessionId);
             return;

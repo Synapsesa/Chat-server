@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced STOMP WebSocket Tester</title>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f9; }
+        .container { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { text-align: center; color: #333; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 15px; align-items: center; }
+        .input-group label { font-weight: bold; color: #555; min-width: 90px; }
+        input, select, button { padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        input[type="text"] { flex: 1; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; transition: background-color 0.2s; }
+        button:hover { background-color: #0056b3; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        #disconnectBtn { background-color: #dc3545; }
+        #disconnectBtn:hover { background-color: #c82333; }
+        .status { padding: 12px; margin-bottom: 20px; border-radius: 4px; font-weight: bold; text-align: center; }
+        .connected { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .disconnected { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .log-container { border: 1px solid #ddd; height: 300px; overflow-y: auto; padding: 10px; margin-top: 20px; background-color: #2b2b2b; color: #a9b7c6; font-family: "Courier New", monospace; font-size: 13px; border-radius: 4px; }
+        .log-entry { margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid #444; }
+        .log-direction-out { color: #cc7832; }
+        .log-direction-in { color: #a5c261; }
+        .log-command { font-weight: bold; color: #ffc66d; }
+        .log-header { color: #9876aa; }
+        .log-body { color: #6a8759; white-space: pre-wrap; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced STOMP WebSocket Tester (Native WebSocket)</h1>
+        
+        <div id="status" class="status disconnected">연결 끊김</div>
+
+        <fieldset id="connection-form">
+            <div class="input-group">
+                <label for="baseUrlInput">Server Base URL:</label>
+                <input type="text" id="baseUrlInput" value="http://localhost:1003">
+            </div>
+            
+            <!-- Gateway Headers (HTTP 단계에서 처리) -->
+            <div class="input-group">
+                <label for="memberIdInput">Member ID (UUID) - HTTP 인증:</label>
+                <input type="text" id="memberIdInput" placeholder="예: 123e4567-e89b-12d3-a456-426614174000">
+            </div>
+            <div class="input-group">
+                <label for="memberRoleInput">Member Role - HTTP 인증:</label>
+                <input type="text" id="memberRoleInput" value="user" placeholder="user">
+            </div>
+
+            <!-- JWT (WebSocket 단계에서 처리) -->
+            <div class="input-group">
+                <label for="jwtInput">JWT Token - WebSocket 인증:</label>
+                <input type="text" id="jwtInput" placeholder="JWT 토큰을 입력하세요">
+            </div>
+
+            <div class="input-group">
+                <button id="connectBtn" onclick="connect()">연결</button>
+                <button id="disconnectBtn" onclick="disconnect()" disabled>연결 해제</button>
+            </div>
+        </fieldset>
+
+        <fieldset id="message-form" disabled>
+            <legend>메시지 전송</legend>
+            <div class="input-group">
+                <label for="modelTypeSelect">AI 모델:</label>
+                <select id="modelTypeSelect">
+                    <option value="GPT">GPT</option>
+                    <option value="GPT_4O_MINI">GPT_4O_MINI</option>
+                    <option value="CLAUDE_3_5_SONNET">CLAUDE_3_5_SONNET</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="sessionIdInput">세션 ID:</label>
+                <input type="text" id="sessionIdInput" placeholder="세션 ID를 입력하세요">
+            </div>
+            <div class="input-group">
+                <label for="messageInput">프롬프트:</label>
+                <input type="text" id="messageInput" placeholder="프롬프트 메시지를 입력하세요.">
+                <button onclick="sendMessage()">전송</button>
+            </div>
+        </fieldset>
+
+        <h3>STOMP Command Logs</h3>
+        <div id="logContainer" class="log-container"></div>
+    </div>
+
+    <script>
+        let stompClient = null;
+
+        function logToScreen(direction, frame) {
+            const logContainer = document.getElementById('logContainer');
+            const logEntry = document.createElement('div');
+            logEntry.className = 'log-entry';
+            
+            const timestamp = new Date().toLocaleTimeString();
+            const directionClass = direction === '>>>' ? 'log-direction-out' : 'log-direction-in';
+            
+            let logContent = `<span class="${directionClass}">[${timestamp}] ${direction}</span> `;
+            logContent += `<span class="log-command">${frame.command || 'UNKNOWN'}</span><br>`;
+            
+            if (frame.headers) {
+                logContent += '<span class="log-header">Headers:</span><br>';
+                for (const [key, value] of Object.entries(frame.headers)) {
+                    logContent += `<span class="log-header">  ${key}: ${value}</span><br>`;
+                }
+            }
+            
+            if (frame.body) {
+                logContent += `<span class="log-body">Body: ${frame.body}</span>`;
+            }
+            
+            logEntry.innerHTML = logContent;
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        async function connect() {
+            const baseUrl = document.getElementById('baseUrlInput').value;
+            const memberId = document.getElementById('memberIdInput').value;
+            const memberRole = document.getElementById('memberRoleInput').value;
+            const jwtToken = document.getElementById('jwtInput').value;
+
+            // 필수 필드 검증
+            if (!baseUrl) {
+                alert('서버 URL을 입력해주세요.');
+                return;
+            }
+            if (!memberId || !memberRole) {
+                alert('Member ID와 Role을 모두 입력해주세요.');
+                return;
+            }
+            if (!jwtToken) {
+                alert('JWT 토큰을 입력해주세요.');
+                return;
+            }
+
+            // UUID 형식 검증
+            const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+            if (!uuidRegex.test(memberId)) {
+                alert('올바른 UUID 형식을 입력해주세요.\n예: 123e4567-e89b-12d3-a456-426614174000');
+                return;
+            }
+
+            // 모든 헤더 포함 (HTTP 업그레이드 + WebSocket 인증)
+            const connectHeaders = {
+                // HTTP 단계에서 CustomAuthenticationFilter가 처리
+                'X-Authenticated-Member-Id': memberId,
+                'X-Authenticated-Member-Role': memberRole,
+                // WebSocket 단계에서 WebSocketChannelInterceptor가 처리
+                'Authorization': `Bearer ${jwtToken}`
+            };
+
+            console.log('모든 헤더로 연결:', connectHeaders);
+            
+            // WebSocket 연결 (네이티브 WebSocket 사용)
+            stompClient = new StompJs.Client({
+                brokerURL: `${baseUrl.replace('http', 'ws')}/ws`,
+                connectHeaders: connectHeaders,
+                debug: (str) => console.log('STOMP: ' + str),
+                reconnectDelay: 5000,
+                onStompError: (frame) => {
+                    logToScreen('<<<', frame);
+                    updateStatus(false);
+                }
+            });
+
+            stompClient.onWebSocketClose = () => updateStatus(false);
+            stompClient.onConnect = (frame) => {
+                logToScreen('<<<', frame);
+                updateStatus(true, frame.headers['user-name']);
+                stompClient.subscribe('/user/queue/response', (message) => {
+                    const frame = { command: 'MESSAGE', headers: message.headers, body: message.body };
+                    logToScreen('<<<', frame);
+                });
+            };
+            
+            logToScreen('>>>', { command: 'CONNECT', headers: stompClient.connectHeaders });
+            stompClient.activate();
+        }
+
+        function disconnect() {
+            if (stompClient !== null) {
+                logToScreen('>>>', { command: 'DISCONNECT' });
+                stompClient.deactivate();
+                updateStatus(false);
+            }
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const sessionIdInput = document.getElementById('sessionIdInput');
+            const modelTypeSelect = document.getElementById('modelTypeSelect');
+            
+            const prompt = messageInput.value.trim();
+            const sessionId = sessionIdInput.value.trim();
+            const modelType = modelTypeSelect.value;
+            
+            // 필수 필드 검증
+            if (!prompt) {
+                alert('프롬프트 메시지를 입력해주세요.');
+                return;
+            }
+            if (!sessionId) {
+                alert('세션 ID를 입력해주세요.');
+                return;
+            }
+            
+            if (stompClient && stompClient.connected) {
+                // MessageRequest.Chat 구조에 맞는 데이터 생성
+                const messageData = {
+                    modelType: modelType,
+                    prompt: prompt,
+                    sessionId: sessionId,
+                    messageId: generateMessageId()
+                };
+                
+                const messageFrame = {
+                    command: 'SEND',
+                    headers: { destination: '/app/chat' },
+                    body: JSON.stringify(messageData)
+                };
+                
+                logToScreen('>>>', messageFrame);
+                stompClient.publish({
+                    destination: '/app/chat',
+                    body: JSON.stringify(messageData)
+                });
+                
+                messageInput.value = '';
+            }
+        }
+
+        // 고유한 메시지 ID 생성 함수
+        function generateMessageId() {
+            return 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        function updateStatus(connected, username = null) {
+            const statusDiv = document.getElementById('status');
+            const connectBtn = document.getElementById('connectBtn');
+            const disconnectBtn = document.getElementById('disconnectBtn');
+            const messageForm = document.getElementById('message-form');
+            
+            if (connected) {
+                statusDiv.textContent = username ? `연결됨 (${username})` : '연결됨';
+                statusDiv.className = 'status connected';
+                connectBtn.disabled = true;
+                disconnectBtn.disabled = false;
+                messageForm.disabled = false;
+            } else {
+                statusDiv.textContent = '연결 끊김';
+                statusDiv.className = 'status disconnected';
+                connectBtn.disabled = false;
+                disconnectBtn.disabled = true;
+                messageForm.disabled = true;
+            }
+        }
+
+        // Enter 키로 메시지 전송
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('messageInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

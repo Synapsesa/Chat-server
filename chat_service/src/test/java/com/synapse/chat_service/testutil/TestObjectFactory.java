@@ -17,21 +17,22 @@ import java.util.UUID;
 public class TestObjectFactory {
 
     // Conversation 생성 메서드들
-    public static Conversation createConversation(Long userId) {
+    public static Conversation createConversation(UUID userId) {
         return Conversation.builder()
                 .userId(userId)
                 .build();
     }
 
     public static Conversation createDefaultConversation() {
-        return createConversation(1L);
+        return createConversation(UUID.randomUUID());
+
     }
 
-    public static Conversation createConversationWithUserId(Long userId) {
+    public static Conversation createConversationWithUserId(UUID userId) {
         return createConversation(userId);
     }
 
-    public static Conversation createConversationWithId(UUID id, Long userId) {
+    public static Conversation createConversationWithId(UUID id, UUID userId) {
         Conversation conversation = Conversation.builder()
                 .userId(userId)
                 .build();
@@ -39,7 +40,7 @@ public class TestObjectFactory {
         return conversation;
     }
 
-    public static Conversation createConversationWithCreatedDate(Long userId, LocalDateTime createdDate) {
+    public static Conversation createConversationWithCreatedDate(UUID userId, LocalDateTime createdDate) {
         Conversation conversation = createConversation(userId);
         setCreatedDate(conversation, createdDate);
         return conversation;
@@ -95,7 +96,7 @@ public class TestObjectFactory {
     }
 
     // ChatUsage 생성 메서드들
-    public static ChatUsage createChatUsage(Long userId, SubscriptionType subscriptionType, Integer messageLimit) {
+    public static ChatUsage createChatUsage(UUID userId, SubscriptionType subscriptionType, Integer messageLimit) {
         return ChatUsage.builder()
                 .userId(userId)
                 .subscriptionType(subscriptionType)
@@ -103,20 +104,20 @@ public class TestObjectFactory {
                 .build();
     }
 
-    public static ChatUsage createFreeChatUsage(Long userId) {
+    public static ChatUsage createFreeChatUsage(UUID userId) {
         return createChatUsage(userId, SubscriptionType.FREE, 100);
     }
 
-    public static ChatUsage createProChatUsage(Long userId) {
+    public static ChatUsage createProChatUsage(UUID userId) {
         return createChatUsage(userId, SubscriptionType.PRO, 1000);
     }
 
     public static ChatUsage createDefaultFreeChatUsage() {
-        return createFreeChatUsage(1L);
+        return createFreeChatUsage(UUID.randomUUID());
     }
 
     public static ChatUsage createDefaultProChatUsage() {
-        return createProChatUsage(1L);
+        return createProChatUsage(UUID.randomUUID());
     }
 
 
