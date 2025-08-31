@@ -1,1 +1,4 @@
 rootProject.name = 'chat_service'
+
+include ('chat_service')
+include ('chat_service_api')
