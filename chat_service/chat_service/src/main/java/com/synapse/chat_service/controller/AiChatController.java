@@ -18,7 +18,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/ai-chat")
+@RequestMapping("/api/chat")
 @RequiredArgsConstructor
 public class AiChatController {
 
