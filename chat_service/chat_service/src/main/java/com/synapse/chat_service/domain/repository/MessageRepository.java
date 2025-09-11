@@ -11,7 +11,7 @@ import com.synapse.chat_service.domain.entity.Message;
 import com.synapse.chat_service_api.dto.response.MessageResponse;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    @Query(value = "SELECT * FROM message WHERE user_id = :userId AND (:cursor IS NULL OR id < :cursor) ORDER BY id DESC LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT m.* FROM messages m JOIN conversations c ON m.conversation_id = c.conversation_id WHERE c.user_id = :userId AND (:cursor IS NULL OR m.id < :cursor) ORDER BY m.id DESC LIMIT :limit", nativeQuery = true)
     List<MessageResponse.History> findByUserIdWithCursorDesc(
         @Param("userId") UUID userId, 
         @Param("cursor") Long cursor,
