@@ -1,0 +1,58 @@
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+	implementation project(':chat_service_api')
+	// Spring AI
+	implementation platform('org.springframework.ai:spring-ai-bom:1.0.0-M4')
+	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+	implementation 'org.springframework.ai:spring-ai-anthropic-spring-boot-starter'
+	implementation 'org.springframework.ai:spring-ai-vertex-ai-gemini-spring-boot-starter'
+	// Spring WebFlux
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	// WebSocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// OAuth2 Resource Server
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	// WebSocket Security
+	implementation 'org.springframework.security:spring-security-messaging'
+	// JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	// H2
+	runtimeOnly 'com.h2database:h2'
+	// PostgreSQL
+	runtimeOnly 'org.postgresql:postgresql'
+	// Auth0
+	implementation 'com.auth0:java-jwt:4.4.0'
+	//Test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testRuntimeOnly 'com.h2database:h2'
+}
+
+def generated = 'src/main/generated'
+
+tasks.withType(JavaCompile) {
+    options.getGeneratedSourceOutputDirectory().set(file(generated))
+}
+
+sourceSets {
+    main.java.srcDirs += [ generated ]
+}
+
+clean {
+    delete file(generated)
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
