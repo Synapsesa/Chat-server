@@ -47,7 +47,7 @@ public class WebSecurityConfig {
                         // WebSocket 핸드셰이크 경로 ("/ws/**") - 인증된 사용자만 허용
                         .requestMatchers("/ws/**").permitAll()
                         // 채팅 관련 API ("/api/v1/messages/**", "/api/v1/ai-chat/**") - 인증된 사용자만 허용
-                        .requestMatchers("/api/v1/messages/**", "/api/v1/ai-chat/**").authenticated()
+                        .requestMatchers("/api/chat/**").authenticated()
                         .requestMatchers("/api/internal/**").access(AuthorizationManagers.allOf(
                                 AuthorityAuthorizationManager.hasAuthority("SCOPE_api.internal"),
                                 AuthorityAuthorizationManager.hasAuthority("SCOPE_chat:read")))
